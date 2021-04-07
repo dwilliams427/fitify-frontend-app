@@ -19,7 +19,7 @@
             Home
             <span class="sr-only">(current)</span>
           </a>
-          <a class="nav-item nav-link" href="#">Workouts</a>
+          <router-link to="/workouts" class="nav-item nav-link">Workouts</router-link>
           <a class="nav-item nav-link" href="#">Exercises</a>
           <a class="nav-item nav-link" href="/about">About</a>
           <span v-if="!isLoggedIn()">

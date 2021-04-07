@@ -1,22 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">About</router-link>
-      |
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/signup">Signup</router-link>
-        |
-      </span>
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/login">Login</router-link>
-      </span>
-      |
-      <router-link to="/logout">Logout</router-link>
-    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Fitify</a>
       <button
@@ -32,16 +15,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">
+          <a class="nav-item nav-link active" href="/">
             Home
             <span class="sr-only">(current)</span>
           </a>
           <a class="nav-item nav-link" href="#">Workouts</a>
           <a class="nav-item nav-link" href="#">Exercises</a>
-          <a class="nav-item nav-link" href="#">About</a>
-          <a class="nav-item nav-link" href="#">Sign Up</a>
-          <a class="nav-item nav-link" href="#">Login</a>
-          <a class="nav-item nav-link" href="#">Logout</a>
+          <a class="nav-item nav-link" href="/about">About</a>
+          <span v-if="!isLoggedIn()">
+            <router-link to="/signup" class="nav-item nav-link">Sign Up</router-link>
+          </span>
+          <span v-if="!isLoggedIn()">
+            <router-link to="/login" class="nav-item nav-link">Login</router-link>
+          </span>
+          <a class="nav-item nav-link" href="/logout">Logout</a>
         </div>
       </div>
     </nav>

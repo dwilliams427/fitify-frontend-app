@@ -1,7 +1,8 @@
 <template>
-  <div class="workout-index">
+  <div class="workout-show">
     <div class="text-center">
-      <a class="btn btn-primary" href="/workouts-new" role="button">New Workout</a>
+      <h1></h1>
+      <a class="btn btn-primary" href="/workouts-new" role="button">Add Exercise</a>
     </div>
 
     <dialog id="workout-details">
@@ -27,7 +28,7 @@
               <h5 class="card-title">{{ workout.name }}</h5>
               <button type="button" class="btn btn-link" v-on:click="workoutInfo(workout)">Edit</button>
               <p class="card-text">Some text</p>
-              <a href="" class="btn btn-success" id="info-button">View</a>
+              <button type="button" class="btn btn-primary" v-on:click="workoutInfo(workout)">View</button>
               <a href="#" class="btn btn-success" id="info-button">PLAY</a>
             </div>
           </div>
@@ -43,43 +44,17 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      workouts: [],
-      currentWorkout: {},
+      workout: {},
     };
   },
   created: function () {
-    this.indexWorkouts();
+    this.showWorkouts();
   },
   methods: {
-    indexWorkouts: function () {
-      axios.get("/api/workouts").then((response) => {
-        console.log("workouts index", response);
-        this.workouts = response.data;
-      });
-    },
-    workoutInfo: function (workout) {
-      this.currentWorkout = workout;
-      document.querySelector("#workout-details").showModal();
-    },
-    updateWorkout: function (workout) {
-      var params = {
-        name: workout.name,
-      };
-      axios
-        .patch("/api/workouts/" + workout.id, params)
-        .then((response) => {
-          console.log("workout updated", response);
-          console.log("workout id: " + workout.id);
-          this.currentworkout = {};
-        })
-        .catch((error) => {
-          console.log("workouts update error", error.response);
-        });
-    },
-    destroyWorkout: function (workout) {
-      axios.delete("/api/workouts/" + workout.id).then(() => {
-        console.log("You did it! Or whatever!");
-        this.$router.push("/workouts");
+    showWorkouts: function () {
+      axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
+        console.log("showing workout", response);
+        this.workout = response.data;
       });
     },
   },

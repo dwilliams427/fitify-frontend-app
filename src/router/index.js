@@ -6,6 +6,8 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
+import WorkoutShow from "../views/WorkoutShow.vue";
+
 
 
 Vue.use(VueRouter);
@@ -48,6 +50,11 @@ const routes = [
     path: "/workouts/new",
     name: "workout-new",
     component: WorkoutNew,
+  },
+  {
+    path: "/workouts/:id",
+    name: "workout-show",
+    component: WorkoutShow,
   },
 ];
 

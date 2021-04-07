@@ -1,28 +1,30 @@
 <template>
   <div class="signup">
     <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
+      <h1>Fitify</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
-      <div class="form-group">
-        <label>Name:</label>
-        <input type="text" class="form-control" v-model="name" />
-        <small class="text-danger" v-if="name.length >= 0 && name.length < 50">
-          {{ 50 - name.length }} characters remaining
+      <!-- <div class="col-xs-4"> -->
+      <div class="form-group col-md-3">
+        <label>Username:</label>
+        <input type="text" class="form-control" v-model="username" />
+        <small class="text-danger" v-if="username.length >= 0 && username.length < 8">
+          {{ 8 - username.length }} characters remaining
         </small>
       </div>
-      <div class="form-group">
+      <!-- </div> -->
+      <div class="form-group col-md-3">
         <label>Email:</label>
         <input type="email" class="form-control" v-model="email" />
       </div>
-      <div class="form-group">
+      <div class="form-group col-md-3">
         <label>Password:</label>
         <input type="password" class="form-control" v-model="password" maxlength="16" />
       </div>
-      <div class="form-group">
+      <div class="form-group col-md-3">
         <label>Password confirmation:</label>
         <input type="password" class="form-control" v-model="passwordConfirmation" />
         <small class="text-danger" v-if="passwordConfirmation != password">passwords must be the same</small>
@@ -38,7 +40,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      name: "",
+      username: "",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -48,7 +50,7 @@ export default {
   methods: {
     submit: function () {
       var params = {
-        name: this.name,
+        username: this.username,
         email: this.email,
         password: this.password,
         password_confirmation: this.passwordConfirmation,
@@ -66,3 +68,8 @@ export default {
   },
 };
 </script>
+<style>
+#signup {
+  align-content: center;
+}
+</style>

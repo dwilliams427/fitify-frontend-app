@@ -1,30 +1,23 @@
 <template>
   <div class="container workout-new">
-    <form v-on:submit.prevent="createPost()">
-      <h1>New Post</h1>
+    <form v-on:submit.prevent="createWorkout()">
+      <h1>New Workout</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
       <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" v-model="title" />
-        <small class="text-danger" v-if="title.length >= 0 && title.length < 50">
-          {{ 50 - title.length }} characters remaining
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="name" />
+        <small class="text-danger" v-if="name.length >= 0 && name.length < 5">
+          {{ 5 - name.length }} characters remaining
         </small>
       </div>
-      <div class="form-group">
-        <label>Body:</label>
-        <input type="text" class="form-control" v-model="body" />
-        <small class="text-danger" v-if="body.length >= 0 && body.length < 500">
-          {{ 500 - body.length }} characters remaining
-        </small>
-      </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label>Image URL:</label>
         <input type="text" class="form-control" v-model="image" />
-      </div>
+      </div> -->
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>

@@ -3,6 +3,21 @@
     <div class="text-center">
       <a class="btn btn-primary" href="/workouts-new" role="button">New Workout</a>
     </div>
+
+    <dialog id="workout-details">
+      <form method="dialog">
+        <h1>{{ currentWorkout.name }}</h1>
+        <p>
+          name:
+          <input type="text" v-model="currentWorkout.name" />
+        </p>
+        <!-- UPDATE AND DESTROY BUTTONS -->
+        <!-- <button v-on:click="updateWorkout(currentWorkout.id)">Update Workout</button>
+        <button v-on:click="destroyWorkout(currentWorkout)">Destroy Workout</button> -->
+        <button>Close</button>
+      </form>
+    </dialog>
+
     <div class="card-deck">
       <div class="card-columns">
         <div v-for="workout in workouts" v-bind:key="workout.id">
@@ -10,9 +25,10 @@
             <img class="card-img-top" src="../assets/logo.png" v-bind:alt="workout.name" />
             <div class="card-body">
               <h5 class="card-title">{{ workout.name }}</h5>
+              <button type="button" class="btn btn-link" v-on:click="workoutInfo(workout)">Edit</button>
               <p class="card-text">Some text</p>
-              <a href="#" class="btn btn-primary" id="info-button">View</a>
-              <a href="#" class="btn btn-primary" id="info-button">More Info</a>
+              <button type="button" class="btn btn-primary" v-on:click="workoutInfo(workout)">View</button>
+              <a href="#" class="btn btn-success" id="info-button">PLAY</a>
             </div>
           </div>
         </div>
@@ -28,6 +44,7 @@ export default {
   data: function () {
     return {
       workouts: [],
+      currentWorkout: {},
     };
   },
   created: function () {
@@ -39,6 +56,25 @@ export default {
         console.log("workouts index", response);
         this.workouts = response.data;
       });
+    },
+    workoutInfo: function (workout) {
+      this.currentWorkout = workout;
+      document.querySelector("#workout-details").showModal();
+    },
+    updateWorkout: function (workout) {
+      var params = {
+        name: workout.name,
+      };
+      axios
+        .patch("/api/workouts/" + workout.id, params)
+        .then((response) => {
+          console.log("workout updated", response);
+          console.log("workout id: " + workout.id);
+          this.currentworkout = {};
+        })
+        .catch((error) => {
+          console.log("workouts update error", error.response);
+        });
     },
   },
 };

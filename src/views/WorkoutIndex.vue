@@ -1,7 +1,7 @@
 <template>
   <div class="workout-index">
     <div class="text-center">
-      <a class="btn btn-primary" href="#" role="button">New Workout</a>
+      <a class="btn btn-primary" href="/workouts-new" role="button">New Workout</a>
     </div>
     <div class="card-deck">
       <div class="card-columns">

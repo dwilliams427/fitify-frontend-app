@@ -5,6 +5,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
+import WorkoutNew from "../views/WorkoutNew.vue";
 
 
 Vue.use(VueRouter);
@@ -42,6 +43,11 @@ const routes = [
     path: "/workouts",
     name: "workout-index",
     component: WorkoutIndex,
+  },
+  {
+    path: "/workouts/new",
+    name: "workout-new",
+    component: WorkoutNew,
   },
 ];
 

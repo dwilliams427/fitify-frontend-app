@@ -20,7 +20,7 @@
             <span class="sr-only">(current)</span>
           </a>
           <router-link to="/workouts" class="nav-item nav-link">Workouts</router-link>
-          <a class="nav-item nav-link" href="#">Exercises</a>
+          <router-link to="/exercises" class="nav-item nav-link">Exercises</router-link>
           <a class="nav-item nav-link" href="/about">About</a>
           <span v-if="!isLoggedIn()">
             <router-link to="/signup" class="nav-item nav-link">Sign Up</router-link>

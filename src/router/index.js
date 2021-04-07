@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
+import ExerciseIndex from "../views/ExerciseIndex.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
 import WorkoutShow from "../views/WorkoutShow.vue";
@@ -40,6 +41,11 @@ const routes = [
     path: "/logout",
     name: "Logout",
     component: Logout,
+  },
+  {
+    path: "/exercises",
+    name: "exercise-index",
+    component: ExerciseIndex,
   },
   {
     path: "/workouts",

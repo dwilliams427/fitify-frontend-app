@@ -70,7 +70,7 @@ export default {
         .then((response) => {
           console.log("workout updated", response);
           console.log("workout id: " + workout.id);
-          this.currentworkout = {};
+          this.currentWorkout = {};
         })
         .catch((error) => {
           console.log("workouts update error", error.response);

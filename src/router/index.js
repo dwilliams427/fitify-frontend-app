@@ -8,6 +8,8 @@ import ExerciseIndex from "../views/ExerciseIndex.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
 import WorkoutShow from "../views/WorkoutShow.vue";
+import WorkoutEdit from "../views/WorkoutEdit.vue";
+
 
 Vue.use(VueRouter);
 
@@ -59,6 +61,11 @@ const routes = [
     path: "/workouts/:id",
     name: "workout-show",
     component: WorkoutShow,
+  },
+  {
+    path: "/workouts/:id/edit",
+    name: "workout-edit",
+    component: WorkoutEdit,
   },
 ];
 

@@ -14,7 +14,7 @@
     <ul id="example-1">
       <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
         <h1>{{ exercise.name }}</h1>
-        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.quantity }} sets</h5>
+        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
         <p>user: {{ exercise.user_id }}</p>
       </div>
     </ul>

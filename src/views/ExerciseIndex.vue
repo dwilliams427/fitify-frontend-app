@@ -1,12 +1,12 @@
 <template>
   <div class="exercise-index">
     <div class="text-center">
-      <a class="btn btn-primary" href="/exercises-new" role="button">New exercise</a>
+      <a class="btn btn-primary" href="/exercises/new" role="button">New Exercise</a>
     </div>
 
     <div v-for="exercise in exercises" v-bind:key="exercise.id">
       <h1>{{ exercise.name }}</h1>
-      <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.quantity }} sets</h5>
+      <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
       <!-- <p>user: {{ exercise.user_id }}</p> -->
     </div>
   </div>
@@ -19,7 +19,6 @@ export default {
   data: function () {
     return {
       exercises: [],
-      // currentExercise: {},
     };
   },
   created: function () {
@@ -40,7 +39,7 @@ export default {
     //   var params = {
     //     name: exercise.name,
     //     reps: exercise.reps,
-    //     quantity: exercise.quantity,
+    //     sets: exercise.sets,
     //   };
     //   axios
     //     .patch("/api/exercises/" + exercise.id, params)

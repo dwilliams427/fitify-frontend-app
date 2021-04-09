@@ -9,8 +9,6 @@ import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
 import WorkoutShow from "../views/WorkoutShow.vue";
 
-
-
 Vue.use(VueRouter);
 
 const routes = [

@@ -27,7 +27,7 @@
               <h5 class="card-title">{{ workout.name }}</h5>
               <button type="button" class="btn btn-link" v-on:click="workoutInfo(workout)">Edit</button>
               <p class="card-text">Some text</p>
-              <a href="" class="btn btn-success" id="info-button">View</a>
+              <a href="/workout-new" class="btn btn-success" id="info-button">View</a>
               <a href="#" class="btn btn-success" id="info-button">PLAY</a>
             </div>
           </div>

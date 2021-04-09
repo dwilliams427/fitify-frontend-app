@@ -1,41 +1,29 @@
 <template>
   <div class="workout-show">
-    <div class="text-center">
-      <h1></h1>
-      <a class="btn btn-primary" href="/workouts-new" role="button">Add Exercise</a>
-    </div>
+    <!-- <div class="text-center">
+      <a class="btn btn-primary" href="#" role="button">Add Exercise</a>
+    </div> -->
 
-    <dialog id="workout-details">
-      <form method="dialog">
-        <h1>{{ currentWorkout.name }}</h1>
-        <p>
-          name:
-          <input type="text" v-model="currentWorkout.name" />
-        </p>
-        <!-- UPDATE AND DESTROY BUTTONS -->
-        <!-- <button v-on:click="updateWorkout(currentWorkout.id)">Update Workout</button>
-        <button v-on:click="destroyWorkout(currentWorkout)">Destroy Workout</button> -->
-        <button>Close</button>
-      </form>
-    </dialog>
+    <!-- <div class="card-deck">
+      <div class="card-columns"> -->
+    <!-- <div v-for="workout in workout.exercises" v-bind:key="workout.id"> -->
+    <!-- <div class="card"> -->
+    <!-- <img class="card-img-top" src="../assets/logo.png" v-bind:alt="workout.name" /> -->
+    <!-- <div class="card-body"> -->
 
-    <div class="card-deck">
-      <div class="card-columns">
-        <div v-for="workout in workouts" v-bind:key="workout.id">
-          <div class="card">
-            <img class="card-img-top" src="../assets/logo.png" v-bind:alt="workout.name" />
-            <div class="card-body">
-              <h5 class="card-title">{{ workout.name }}</h5>
-              <button type="button" class="btn btn-link" v-on:click="workoutInfo(workout)">Edit</button>
-              <p class="card-text">Some text</p>
-              <button type="button" class="btn btn-primary" v-on:click="workoutInfo(workout)">View</button>
-              <a href="#" class="btn btn-success" id="info-button">PLAY</a>
-            </div>
-          </div>
-        </div>
+    <ul id="example-1">
+      <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+        <h1>{{ exercise.name }}</h1>
+        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.quantity }} sets</h5>
+        <p>user: {{ exercise.user_id }}</p>
       </div>
-    </div>
+    </ul>
   </div>
+  <!-- </div> -->
+  <!-- </div> -->
+  <!-- </div>
+    </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -44,7 +32,8 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      workout: {},
+      workout: [],
+      exercises: [],
     };
   },
   created: function () {
@@ -53,8 +42,10 @@ export default {
   methods: {
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
-        console.log("showing workout", response);
+        // console.log("showing workout", response);
+        // console.log("workout exercises", this.workout.exercises);
         this.workout = response.data;
+        console.log(this.workout.exercises);
       });
     },
   },

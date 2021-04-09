@@ -19,7 +19,7 @@ export default {
   data: function () {
     return {
       exercises: [],
-      currentExercise: {},
+      // currentExercise: {},
     };
   },
   created: function () {
@@ -32,33 +32,33 @@ export default {
         this.exercises = response.data;
       });
     },
-    exerciseInfo: function (exercise) {
-      this.currentExercise = exercise;
-      document.querySelector("#exercise-details").showModal();
-    },
-    updateExercise: function (exercise) {
-      var params = {
-        name: exercise.name,
-        reps: exercise.reps,
-        quantity: exercise.quantity,
-      };
-      axios
-        .patch("/api/exercises/" + exercise.id, params)
-        .then((response) => {
-          console.log("exercise updated", response);
-          console.log("exercise id: " + exercise.id);
-          this.currentExercise = {};
-        })
-        .catch((error) => {
-          console.log("exercises update error", error.response);
-        });
-    },
-    destroyExercise: function (exercise) {
-      axios.delete("/api/exercises/" + exercise.id).then(() => {
-        console.log("You did it! Or whatever!");
-        this.$router.push("/exercises");
-      });
-    },
+    // exerciseInfo: function (exercise) {
+    //   this.currentExercise = exercise;
+    //   document.querySelector("#exercise-details").showModal();
+    // },
+    // updateExercise: function (exercise) {
+    //   var params = {
+    //     name: exercise.name,
+    //     reps: exercise.reps,
+    //     quantity: exercise.quantity,
+    //   };
+    //   axios
+    //     .patch("/api/exercises/" + exercise.id, params)
+    //     .then((response) => {
+    //       console.log("exercise updated", response);
+    //       console.log("exercise id: " + exercise.id);
+    //       this.currentExercise = {};
+    //     })
+    //     .catch((error) => {
+    //       console.log("exercises update error", error.response);
+    //     });
+    // },
+    // destroyExercise: function (exercise) {
+    //   axios.delete("/api/exercises/" + exercise.id).then(() => {
+    //     console.log("You did it! Or whatever!");
+    //     this.$router.push("/exercises");
+    //   });
+    // },
   },
 };
 </script>

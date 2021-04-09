@@ -1,7 +1,7 @@
 <template>
   <div class="container workout-new">
     <form v-on:submit.prevent="createWorkout()">
-      <h1>New Workout</h1>
+      <h1>Create New Workout</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}

@@ -67,6 +67,11 @@ const routes = [
     name: "workout-edit",
     component: WorkoutEdit,
   },
+  {
+    path: "/workouts/:id/edit",
+    name: "workout-edit",
+    component: WorkoutEdit,
+  },
 ];
 
 const router = new VueRouter({

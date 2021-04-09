@@ -1,7 +1,10 @@
 <template>
   <div class="container workout-edit">
     <form v-on:submit.prevent="updateWorkout(workout)">
-      <h1>Edit Workout: {{ workout.name }}</h1>
+      <h1>
+        <h3>Edit Workout:</h3>
+        {{ workout.name }}
+      </h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
@@ -10,7 +13,8 @@
       <div>
         Name:
         <input type="text" v-model="workout.name" />
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="btn btn-primary" value="Update" />
+        <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyWorkout(workout)">Delete</button>
       </div>
     </form>
   </div>
@@ -47,6 +51,12 @@ export default {
           console.log("workouts update error", error.response);
           this.errors = error.response.data.errors;
         });
+    },
+    destroyWorkout: function (workout) {
+      axios.delete("/api/workouts/" + workout.id).then((response) => {
+        console.log("workouts destroy", response);
+        this.$router.push("/workouts");
+      });
     },
   },
 };

@@ -6,6 +6,9 @@
 
     <div v-for="workout in workouts" v-bind:key="workout.id">
       <h5 class="card-title">{{ workout.name }}</h5>
+      <router-link v-bind:to="`workouts/${workout.id}`">
+        <button type="button" class="btn btn-link">More Info</button>
+      </router-link>
     </div>
   </div>
 </template>

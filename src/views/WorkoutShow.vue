@@ -18,6 +18,9 @@
         <p>user: {{ exercise.user_id }}</p>
       </div>
     </ul>
+    <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
+    |
+    <router-link v-bind:to="`/exercises`">Add Exercise</router-link>
   </div>
   <!-- </div> -->
   <!-- </div> -->

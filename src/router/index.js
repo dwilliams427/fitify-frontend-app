@@ -7,6 +7,7 @@ import Logout from "../views/Logout.vue";
 import ExerciseIndex from "../views/ExerciseIndex.vue";
 import ExerciseNew from "../views/ExerciseNew.vue";
 import ExerciseShow from "../views/ExerciseShow.vue";
+import ExerciseEdit from "../views/ExerciseEdit.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
 import WorkoutShow from "../views/WorkoutShow.vue";
@@ -49,6 +50,11 @@ const routes = [
     path: "/exercises/new",
     name: "exercise-new",
     component: ExerciseNew,
+  },
+  {
+    path: "/exercises/:id/edit",
+    name: "exercise-edit",
+    component: ExerciseEdit,
   },
   {
     path: "/exercises",

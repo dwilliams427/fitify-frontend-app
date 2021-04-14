@@ -8,6 +8,9 @@
       <h1>{{ exercise.name }}</h1>
       <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
       <!-- <p>user: {{ exercise.user_id }}</p> -->
+      <router-link v-bind:to="`exercises/${exercise.id}`">
+        <button type="button" class="btn btn-link">More Info</button>
+      </router-link>
     </div>
   </div>
 </template>

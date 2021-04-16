@@ -1,16 +1,5 @@
 <template>
   <div class="workout-show">
-    <!-- <div class="text-center">
-      <a class="btn btn-primary" href="#" role="button">Add Exercise</a>
-    </div> -->
-
-    <!-- <div class="card-deck">
-      <div class="card-columns"> -->
-    <!-- <div v-for="workout in workout.exercises" v-bind:key="workout.id"> -->
-    <!-- <div class="card"> -->
-    <!-- <img class="card-img-top" src="../assets/logo.png" v-bind:alt="workout.name" /> -->
-    <!-- <div class="card-body"> -->
-
     <ul id="example-1">
       <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
         <h1>{{ exercise.name }}</h1>
@@ -23,13 +12,47 @@
     </ul>
     <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
     |
-    <router-link v-bind:to="`/exercises`">Add Exercise</router-link>
+    <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      v-on:click="getExercises()"
+    >
+      Add an Exercise
+    </button>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Exercises</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
+            <h3>{{ exercise.name }}</h3>
+            <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+            <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- </div>
-    </div> -->
-  <!-- </div> -->
 </template>
 
 <script>
@@ -64,6 +87,22 @@ export default {
         console.log("exercises destroy", response);
         // in exercise object, remove this exercise - will not refresh
         this.workout.exercises.splice(this.workout.exercises.indexOf(exercise), 1);
+      });
+    },
+    getExercises: function () {
+      axios.get("api/exercises").then((response) => {
+        this.exercises = response.data;
+        console.log(this.exercises);
+      });
+    },
+    addExercise: function (exercise) {
+      var params = {
+        exercise_id: exercise.id,
+        workout_id: this.workout.id,
+      };
+      axios.post("api/workout_exercises/", params).then((response) => {
+        console.log(response);
+        //add to workout_exercises table somehow
       });
     },
   },

@@ -16,6 +16,9 @@
         <h1>{{ exercise.name }}</h1>
         <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
         <p>user: {{ exercise.user_id }}</p>
+        <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
+          Delete
+        </button>
       </div>
     </ul>
     <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
@@ -37,6 +40,7 @@ export default {
     return {
       workout: [],
       exercises: [],
+      exercise: {},
     };
   },
   created: function () {
@@ -48,7 +52,18 @@ export default {
         // console.log("showing workout", response);
         // console.log("workout exercises", this.workout.exercises);
         this.workout = response.data;
-        console.log(this.workout.exercises);
+        console.log(this.workout);
+      });
+    },
+    destroyExercise: function (exercise) {
+      var params = {
+        exercise_id: exercise.id,
+        workout_id: this.workout.id,
+      };
+      axios.delete("/api/workout_exercises/", { data: params }).then((response) => {
+        console.log("exercises destroy", response);
+        // in exercise object, remove this exercise - will not refresh
+        this.workout.exercises.splice(this.workout.exercises.indexOf(exercise), 1);
       });
     },
   },

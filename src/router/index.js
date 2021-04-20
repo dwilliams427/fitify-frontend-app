@@ -11,6 +11,7 @@ import ExerciseEdit from "../views/ExerciseEdit.vue";
 import WorkoutIndex from "../views/WorkoutIndex.vue";
 import WorkoutNew from "../views/WorkoutNew.vue";
 import WorkoutShow from "../views/WorkoutShow.vue";
+import WorkoutPlay from "../views/WorkoutPlay.vue";
 import WorkoutEdit from "../views/WorkoutEdit.vue";
 
 
@@ -80,6 +81,11 @@ const routes = [
     path: "/workouts/:id",
     name: "workout-show",
     component: WorkoutShow,
+  },
+  {
+    path: "/workouts/:id",
+    name: "workout-play",
+    component: WorkoutPlay,
   },
   {
     path: "/workouts/:id/edit",

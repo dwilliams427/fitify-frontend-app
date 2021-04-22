@@ -1,5 +1,5 @@
 <template>
-  <div class="workout-show">
+  <div class="workout-play">
     <ul id="example-1">
       <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
         <h1>{{ exercise.name }}</h1>

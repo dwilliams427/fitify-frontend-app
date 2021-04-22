@@ -83,7 +83,7 @@ const routes = [
     component: WorkoutShow,
   },
   {
-    path: "/workouts/:id",
+    path: "/workouts/:id/play",
     name: "workout-play",
     component: WorkoutPlay,
   },

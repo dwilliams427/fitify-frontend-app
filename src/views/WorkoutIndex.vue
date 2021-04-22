@@ -9,7 +9,9 @@
       <router-link v-bind:to="`workouts/${workout.id}`">
         <button type="button" class="btn btn-link">More Info</button>
       </router-link>
-      <button type="button" class="btn btn-success">PLAY</button>
+      <router-link v-bind:to="`workouts/${workout.id}/play`">
+        <button type="button" class="btn btn-success">PLAY</button>
+      </router-link>
     </div>
   </div>
 </template>

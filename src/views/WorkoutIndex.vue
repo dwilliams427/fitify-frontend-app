@@ -19,8 +19,55 @@
       </section>
     </div>
     <!-- Site Breadcrumb End -->
+
+    <!-- CARDS BEGIN -->
+    <div>
+      <section class="about-page-trainer spad">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="col-lg-12">
+                <div class="section-title">
+                  <h2>Workouts</h2>
+                  <p>Edit your workouts or create a new one</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-deck">
+            <div v-for="workout in workouts" v-bind:key="workout.id">
+              <div class="row">
+                <div class="col-lg-10">
+                  <router-link v-bind:to="`workouts/${workout.id}`">
+                    <div class="single-trainer-item">
+                      <div class="trainer-pic">
+                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                      </div>
+                      <div class="trainer-text">
+                        <h5>{{ workout.name }}</h5>
+                        <span>{{ workout.exercises.length }} exercises</span>
+
+                        <router-link v-bind:to="`workouts/${workout.id}/play`">
+                          <!-- <button type="button" class="btn btn-success">PLAY</button> -->
+                          <button type="button" class="primary-btn">
+                            PLAY
+                            <i class="ti-angle-double-right"></i>
+                          </button>
+                        </router-link>
+                      </div>
+                    </div>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- CARDS END -->
+
     <!-- BEGIN CARDS -->
-    <section class="latest-news-section spad">
+    <!-- <section class="latest-news-section spad">
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title">
@@ -30,8 +77,6 @@
       </div>
       <div class="card-deck">
         <div v-for="workout in workouts" v-bind:key="workout.id">
-          <!-- <div class="card"> -->
-
           <div class="row">
             <div class="col-lg-10">
               <div class="latest-items">
@@ -54,7 +99,6 @@
                       6 Comments
                     </div>
                     <router-link v-bind:to="`workouts/${workout.id}/play`">
-                      <!-- <button type="button" class="btn btn-success">PLAY</button> -->
                       <button type="button" class="primary-btn">
                         PLAY
                         <i class="ti-angle-double-right"></i>
@@ -64,11 +108,11 @@
                 </div>
               </div>
             </div>
-            <!-- </div> -->
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+    <!-- END CARDS -->
 
     <!-- FAB -->
     <fab

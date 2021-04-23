@@ -1,45 +1,48 @@
 <template>
   <div class="home">
-    <section class="hero-section">
-      <div class="hero-items owl-carousel">
-        <div class="single-hero-item set-bg" data-setbg="img/slider-bg-1.jpg">
-          <div class="container">
-            <div class="hero-text">
-              <h4>Elite Personal Training Services</h4>
-              <h1>
-                Make it
-                <span>Shape</span>
-              </h1>
-              <a href="#" class="primary-btn">Join Us Now</a>
+    <h1>TESTING</h1>
+    <div>
+      <section class="hero-section">
+        <div class="hero-items owl-carousel">
+          <div class="single-hero-item set-bg" data-setbg="img/slider-bg-1.jpg">
+            <div class="container">
+              <div class="hero-text">
+                <h4>Elite Personal Training Services</h4>
+                <h1>
+                  Make it
+                  <span>Shape</span>
+                </h1>
+                <a href="#" class="primary-btn">Join Us Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="single-hero-item set-bg" data-setbg="img/slider-bg-2.jpg">
+            <div class="container">
+              <div class="hero-text">
+                <h4>Elite Personal Training Services</h4>
+                <h1>
+                  Make it
+                  <span>Shape</span>
+                </h1>
+                <a href="#" class="primary-btn">Join Us Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="single-hero-item set-bg" data-setbg="img/slider-bg-3.jpg">
+            <div class="container">
+              <div class="hero-text">
+                <h4>Elite Personal Training Services</h4>
+                <h1>
+                  Make it
+                  <span>Shape</span>
+                </h1>
+                <a href="#" class="primary-btn">Join Us Now</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="single-hero-item set-bg" data-setbg="img/slider-bg-2.jpg">
-          <div class="container">
-            <div class="hero-text">
-              <h4>Elite Personal Training Services</h4>
-              <h1>
-                Make it
-                <span>Shape</span>
-              </h1>
-              <a href="#" class="primary-btn">Join Us Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="single-hero-item set-bg" data-setbg="img/slider-bg-3.jpg">
-          <div class="container">
-            <div class="hero-text">
-              <h4>Elite Personal Training Services</h4>
-              <h1>
-                Make it
-                <span>Shape</span>
-              </h1>
-              <a href="#" class="primary-btn">Join Us Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 

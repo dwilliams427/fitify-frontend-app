@@ -10,7 +10,7 @@
         <div class="nav-menu">
           <nav class="mainmenu mobile-menu">
             <ul>
-              <li class="active"><a href="./index.html">Home</a></li>
+              <li class="active"><a href="/home">Home</a></li>
               <li><a href="/workouts">Workouts</a></li>
               <li><a href="/exercises">Exercises</a></li>
               <li><a href="/about">About</a></li>
@@ -135,6 +135,9 @@
 }
 h2 {
   color: whitesmoke;
+}
+.header-section {
+  background: black;
 }
 </style>
 <script>

@@ -1,18 +1,69 @@
 <template>
   <div class="workout-index">
-    <div class="text-center">
-      <a class="btn btn-primary" href="/workouts/new" role="button">New Workout</a>
-    </div>
+    <section class="latest-news-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2>Workouts</h2>
+            </div>
+          </div>
+        </div>
+        <!-- BEGIN CARDS -->
+        <div class="card-deck">
+          <div v-for="workout in workouts" v-bind:key="workout.id">
+            <!-- <div class="card"> -->
+            <div class="row">
+              <div class="col-lg-10">
+                <div class="latest-items">
+                  <div class="latest-pic">
+                    <img src="img/latest-1.jpg" alt="" />
+                  </div>
+                  <div class="latest-text">
+                    <div class="latest-tag">
+                      <router-link v-bind:to="`workouts/${workout.id}`">
+                        <h2>
+                          <a class="card-title" href="blog-details.html">{{ workout.name }}</a>
+                        </h2>
+                      </router-link>
+                      <div class="tag-clock">
+                        <i class="fa fa-clock-o"></i>
+                        Dec 11, 2018
+                      </div>
+                      <div class="tag-comments">
+                        <i class="fa fa-comments-o"></i>
+                        6 Comments
+                      </div>
+                      <router-link v-bind:to="`workouts/${workout.id}/play`">
+                        <button type="button" class="btn btn-success">PLAY</button>
+                      </router-link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div v-for="workout in workouts" v-bind:key="workout.id">
-      <h5 class="card-title">{{ workout.name }}</h5>
-      <router-link v-bind:to="`workouts/${workout.id}`">
-        <button type="button" class="btn btn-link">More Info</button>
-      </router-link>
-      <router-link v-bind:to="`workouts/${workout.id}/play`">
-        <button type="button" class="btn btn-success">PLAY</button>
-      </router-link>
-    </div>
+    <!-- VUE ORIGINAL -->
+    <!-- <div class="container">
+      <div class="text-center">
+        <a class="btn btn-primary" href="/workouts/new" role="button">New Workout</a>
+      </div>
+
+      <div v-for="workout in workouts" v-bind:key="workout.id">
+        <h5 class="card-title">{{ workout.name }}</h5>
+        <router-link v-bind:to="`workouts/${workout.id}`">
+          <button type="button" class="btn btn-link">More Info</button>
+        </router-link>
+        <router-link v-bind:to="`workouts/${workout.id}/play`">
+          <button type="button" class="btn btn-success">PLAY</button>
+        </router-link>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -73,5 +124,14 @@ export default {
 }
 #info-button {
   margin: 4px;
+}
+.latest-news-section {
+  background: white;
+}
+.card-title {
+  color: black;
+}
+.btn {
+  justify-content: right;
 }
 </style>

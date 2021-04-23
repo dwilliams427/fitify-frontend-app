@@ -35,7 +35,11 @@
                         6 Comments
                       </div>
                       <router-link v-bind:to="`workouts/${workout.id}/play`">
-                        <button type="button" class="btn btn-success">PLAY</button>
+                        <!-- <button type="button" class="btn btn-success">PLAY</button> -->
+                        <button type="button" class="primary-btn">
+                          PLAY
+                          <i class="ti-angle-double-right"></i>
+                        </button>
                       </router-link>
                     </div>
                   </div>
@@ -164,7 +168,7 @@ export default {
 .card-title {
   color: black;
 }
-.btn {
+.primary-btn {
   justify-content: right;
 }
 </style>

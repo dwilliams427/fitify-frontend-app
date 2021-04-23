@@ -1,54 +1,56 @@
 <template>
   <div class="workout-show">
-    <button type="button" class="btn btn-success">PLAY</button>
-    <ul id="example-1">
-      <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
-        <h1>{{ exercise.name }}</h1>
-        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
-        <p>user: {{ exercise.user_id }}</p>
-        <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
-          Delete
-        </button>
-      </div>
-    </ul>
-    <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
-    |
-    <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#exampleModal"
-      v-on:click="getExercises()"
-    >
-      Add an Exercise
-    </button>
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Exercises</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
-            <h3>{{ exercise.name }}</h3>
-            <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
-            <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Done</button>
+    <div class="container">
+      <button type="button" class="btn btn-success">PLAY</button>
+      <ul id="example-1">
+        <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+          <h1>{{ exercise.name }}</h1>
+          <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+          <p>user: {{ exercise.user_id }}</p>
+          <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
+            Delete
+          </button>
+        </div>
+      </ul>
+      <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
+      |
+      <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+        v-on:click="getExercises()"
+      >
+        Add an Exercise
+      </button>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Exercises</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
+              <h3>{{ exercise.name }}</h3>
+              <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+              <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Done</button>
+            </div>
           </div>
         </div>
       </div>
@@ -118,5 +120,8 @@ export default {
 }
 #info-button {
   margin: 4px;
+}
+.workout-show {
+  background: white;
 }
 </style>

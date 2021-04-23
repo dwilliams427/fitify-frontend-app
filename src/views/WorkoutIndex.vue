@@ -1,52 +1,70 @@
 <template>
   <div class="workout-index">
-    <section class="latest-news-section spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-title">
-              <h2>Workouts</h2>
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="assets/about-breadcrumb-bg.jpg">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/home" class="sb-item">Home</a>
+                  <span class="sb-item">Workouts</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- BEGIN CARDS -->
-        <div class="card-deck">
-          <div v-for="workout in workouts" v-bind:key="workout.id">
-            <!-- <div class="card"> -->
-            <div class="row">
-              <div class="col-lg-10">
-                <div class="latest-items">
-                  <div class="latest-pic">
-                    <img src="img/latest-1.jpg" alt="" />
-                  </div>
-                  <div class="latest-text">
-                    <div class="latest-tag">
-                      <router-link v-bind:to="`workouts/${workout.id}`">
-                        <h2>
-                          <a class="card-title" href="blog-details.html">{{ workout.name }}</a>
-                        </h2>
-                      </router-link>
-                      <div class="tag-clock">
-                        <i class="fa fa-clock-o"></i>
-                        Dec 11, 2018
-                      </div>
-                      <div class="tag-comments">
-                        <i class="fa fa-comments-o"></i>
-                        6 Comments
-                      </div>
-                      <router-link v-bind:to="`workouts/${workout.id}/play`">
-                        <!-- <button type="button" class="btn btn-success">PLAY</button> -->
-                        <button type="button" class="primary-btn">
-                          PLAY
-                          <i class="ti-angle-double-right"></i>
-                        </button>
-                      </router-link>
+      </section>
+    </div>
+    <!-- Site Breadcrumb End -->
+    <!-- BEGIN CARDS -->
+    <section class="latest-news-section spad">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title">
+            <h2>Workouts</h2>
+          </div>
+        </div>
+      </div>
+      <div class="card-deck">
+        <div v-for="workout in workouts" v-bind:key="workout.id">
+          <!-- <div class="card"> -->
+
+          <div class="row">
+            <div class="col-lg-10">
+              <div class="latest-items">
+                <div class="latest-pic">
+                  <img src="img/latest-1.jpg" alt="" />
+                </div>
+                <div class="latest-text">
+                  <div class="latest-tag">
+                    <router-link v-bind:to="`workouts/${workout.id}`">
+                      <h2>
+                        <a class="card-title" href="blog-details.html">{{ workout.name }}</a>
+                      </h2>
+                    </router-link>
+                    <div class="tag-clock">
+                      <i class="fa fa-clock-o"></i>
+                      Dec 11, 2018
                     </div>
+                    <div class="tag-comments">
+                      <i class="fa fa-comments-o"></i>
+                      6 Comments
+                    </div>
+                    <router-link v-bind:to="`workouts/${workout.id}/play`">
+                      <!-- <button type="button" class="btn btn-success">PLAY</button> -->
+                      <button type="button" class="primary-btn">
+                        PLAY
+                        <i class="ti-angle-double-right"></i>
+                      </button>
+                    </router-link>
                   </div>
                 </div>
               </div>
-              <!-- </div> -->
             </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>

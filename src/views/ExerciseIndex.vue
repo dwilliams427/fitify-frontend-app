@@ -1,16 +1,37 @@
 <template>
   <div class="exercise-index">
-    <div class="text-center">
-      <a class="btn btn-primary" href="/exercises/new" role="button">New Exercise</a>
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="assets/breadcrumb_background.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/home" class="sb-item">Home</a>
+                  <span class="sb-item">Workouts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+    <!-- Site Breadcrumb End -->
+    <div class="exercises-container">
+      <div class="container">
+        <a class="btn btn-primary" href="/exercises/new" role="button">New Exercise</a>
+      </div>
 
-    <div v-for="exercise in exercises" v-bind:key="exercise.id">
-      <h1>{{ exercise.name }}</h1>
-      <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
-      <!-- <p>user: {{ exercise.user_id }}</p> -->
-      <router-link v-bind:to="`exercises/${exercise.id}`">
-        <button type="button" class="btn btn-link">More Info</button>
-      </router-link>
+      <div v-for="exercise in exercises" v-bind:key="exercise.id">
+        <h1>{{ exercise.name }}</h1>
+        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+        <!-- <p>user: {{ exercise.user_id }}</p> -->
+        <router-link v-bind:to="`exercises/${exercise.id}`">
+          <button type="button" class="btn btn-link">More Info</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -73,5 +94,8 @@ export default {
 }
 #info-button {
   margin: 4px;
+}
+.exercises-container {
+  background: white;
 }
 </style>

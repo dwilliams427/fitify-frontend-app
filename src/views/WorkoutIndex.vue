@@ -48,6 +48,15 @@
       </div>
     </section>
 
+    <!-- FAB -->
+    <fab
+      :position="position"
+      :bg-color="bgColor"
+      :actions="fabActions"
+      @new_exercise="new_exercise"
+      @new_workout="new_workout"
+    ></fab>
+
     <!-- VUE ORIGINAL -->
     <!-- <div class="container">
       <div class="text-center">
@@ -69,18 +78,42 @@
 
 <script>
 import axios from "axios";
+import fab from "vue-fab";
 
 export default {
+  components: {
+    fab,
+  },
   data: function () {
     return {
       workouts: [],
       exercises: [],
+      bgColor: "#f34e3a",
+      position: "bottom-right",
+      fabActions: [
+        {
+          name: "new_exercise",
+          icon: "fitness_center",
+          tooltip: "New Exercise",
+        },
+        {
+          name: "new_workout",
+          icon: "view_list",
+          tooltip: "New Workout",
+        },
+      ],
     };
   },
   created: function () {
     this.indexWorkouts();
   },
   methods: {
+    new_exercise() {
+      this.$router.push("/workouts/new");
+    },
+    new_workout() {
+      this.$router.push("/exercises/new");
+    },
     indexWorkouts: function () {
       axios.get("/api/workouts").then((response) => {
         console.log("workouts index", response);

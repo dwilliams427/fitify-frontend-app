@@ -1,8 +1,101 @@
 <template>
   <div class="workout-show">
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="assets/breadcrumb_background.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/home" class="sb-item">Home</a>
+                  <span class="sb-item">{{ workout.name }} Workout</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Site Breadcrumb End -->
+
+    <!-- CARD BEGIN -->
+    <div>
+      <section class="about-page-trainer spad">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="col-lg-12">
+                <div class="section-title">
+                  <h2>{{ workout.name }}</h2>
+                  <span>
+                    <h5>{{ workout.exercises.length }} exercises</h5>
+                  </span>
+                </div>
+                <!-- PLAY BUTTON -->
+                <div class="text-center">
+                  <span>
+                    <router-link v-bind:to="`workouts/${workout.id}/play`">
+                      <button type="button" class="primary-btn">
+                        PLAY
+                        <i class="ti-angle-double-right"></i>
+                      </button>
+                    </router-link>
+                    <!-- <div class="trainer-social">
+                    <router-link v-bind:to="`workouts/${workout.id}/edit`">
+                      <a href="">More Info</a>
+                    </router-link>
+                  </div> -->
+                    <router-link v-bind:to="`workouts/${workout.id}/edit`">
+                      <a class="blog-btn">
+                        Edit Workout
+                        <i class="fa fa-angle-double-right"></i>
+                      </a>
+                    </router-link>
+                  </span>
+                </div>
+                <!-- PLAY BUTTON -->
+              </div>
+            </div>
+          </div>
+          <div class="card-deck">
+            <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+              <div class="row">
+                <div class="col-lg-10">
+                  <router-link v-bind:to="`exercises/${exercise.id}/edit`">
+                    <div class="single-trainer-item">
+                      <div class="trainer-pic">
+                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                      </div>
+                      <div class="trainer-text">
+                        <h5>{{ exercise.name }}</h5>
+                        <span>
+                          <i class="material-icons">timer</i>
+                          | {{ exercise.length }} seconds
+                        </span>
+                        <span>{{ exercise.reps }} reps</span>
+                        <span>{{ exercise.sets }} sets</span>
+                        <div class="trainer-social">
+                          <router-link v-bind:to="`exercises/${exercise.id}/edit`">
+                            <a href="">More Info</a>
+                          </router-link>
+                        </div>
+                      </div>
+                    </div>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- CARD END -->
+
+    <!-- ORIGINAL VUE -->
     <div class="container">
-      <button type="button" class="btn btn-success">PLAY</button>
-      <ul id="example-1">
+      <!-- <ul id="example-1">
         <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
           <h1>{{ exercise.name }}</h1>
           <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
@@ -13,18 +106,22 @@
         </div>
       </ul>
       <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
-      |
+      | -->
       <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
+
       <!-- Button trigger modal -->
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#exampleModal"
-        v-on:click="getExercises()"
-      >
-        Add an Exercise
-      </button>
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          v-on:click="getExercises()"
+        >
+          Add an Exercise
+        </button>
+      </div>
+
       <!-- Modal -->
       <div
         class="modal fade"
@@ -55,6 +152,7 @@
         </div>
       </div>
     </div>
+    <!-- ORIGINAL VUE -->
   </div>
 </template>
 
@@ -73,6 +171,10 @@ export default {
     this.showWorkouts();
   },
   methods: {
+    new_exercise() {
+      this.getExercises();
+    },
+
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         // console.log("showing workout", response);
@@ -123,5 +225,11 @@ export default {
 }
 .workout-show {
   background: white;
+}
+.breadcrumb-section {
+  background: black;
+}
+.text-center {
+  margin: 10px;
 }
 </style>

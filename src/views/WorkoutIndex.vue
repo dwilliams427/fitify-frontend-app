@@ -122,6 +122,7 @@
       @new_exercise="new_exercise"
       @new_workout="new_workout"
     ></fab>
+    <!-- FAB -->
 
     <!-- VUE ORIGINAL -->
     <!-- <div class="container">

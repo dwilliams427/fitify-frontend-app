@@ -45,17 +45,9 @@
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
-                        <span>
-                          <i class="material-icons">timer</i>
-                          | {{ exercise.length }} seconds
-                        </span>
+                        <span>{{ exercise.length }} seconds</span>
                         <span>{{ exercise.reps }} reps</span>
                         <span>{{ exercise.sets }} sets</span>
-                        <div class="trainer-social">
-                          <router-link v-bind:to="`exercises/${exercise.id}/edit`">
-                            <a href="">More Info</a>
-                          </router-link>
-                        </div>
                       </div>
                     </div>
                   </router-link>

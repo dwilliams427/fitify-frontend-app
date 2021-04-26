@@ -1,35 +1,51 @@
 <template>
   <div id="app">
-    <header class="header-section">
-      <div class="container">
-        <div class="logo">
-          <a href="./index.html">
-            <h2>FITIFY</h2>
-          </a>
-        </div>
-        <div class="nav-menu">
-          <nav class="mainmenu mobile-menu">
-            <ul>
-              <li class="active"><a href="/home">Home</a></li>
-              <li><a href="/workouts">Workouts</a></li>
-              <li><a href="/exercises">Exercises</a></li>
-              <li><a href="/about">About</a></li>
-              <!-- <li>
+    <div>
+      <!-- HEADER BEGIN -->
+      <header class="header-section">
+        <div class="container">
+          <div class="logo">
+            <a href="./index.html">
+              <h2>FITIFY</h2>
+            </a>
+          </div>
+          <div class="nav-menu">
+            <nav class="mainmenu mobile-menu">
+              <ul>
+                <li class="active"><a href="/home">Home</a></li>
+                <li><a href="/workouts">Workouts</a></li>
+                <li><a href="/exercises">Exercises</a></li>
+                <li><a href="/about">About</a></li>
+                <li>
+                  <span v-if="!isLoggedIn()">
+                    <!-- <router-link to="/signup" class="nav-item nav-link">Sign Up</router-link> -->
+                    <a href="/signup">Sign Up</a>
+                  </span>
+                </li>
+                <li>
+                  <span v-if="!isLoggedIn()">
+                    <!-- <router-link to="/login" class="nav-item nav-link">Login</router-link> -->
+                    <a href="/login">Login</a>
+                  </span>
+                </li>
+                <li><a class="nav-item nav-link" href="/logout">Logout</a></li>
+                <!-- <li>
                 <a href="./blog.html">Blog</a>
                 <ul class="dropdown">
                   <li><a href="blog-details.html">Blog Details</a></li>
                 </ul>
               </li> -->
-              <!-- <li><a href="./contact.html">Contacts</a></li> -->
-            </ul>
-          </nav>
-          <div class="nav-right search-switch">
-            <i class="ti-search"></i>
+                <!-- <li><a href="./contact.html">Contacts</a></li> -->
+              </ul>
+            </nav>
+            <div class="nav-right search-switch">
+              <i class="ti-search"></i>
+            </div>
           </div>
+          <div id="mobile-menu-wrap"></div>
         </div>
-        <div id="mobile-menu-wrap"></div>
-      </div>
-    </header>
+      </header>
+    </div>
     <!-- Header End -->
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">

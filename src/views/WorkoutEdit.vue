@@ -1,5 +1,24 @@
 <template>
   <div class="container workout-edit">
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="assets/breadcrumb_background.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/home" class="sb-item">Home</a>
+                  <span class="sb-item">{{ workout.name }} Edit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Site Breadcrumb End -->
     <form v-on:submit.prevent="updateWorkout(workout)">
       <h1>
         <h3>Edit Workout:</h3>

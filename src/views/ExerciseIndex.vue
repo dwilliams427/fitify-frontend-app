@@ -101,12 +101,12 @@ export default {
       position: "bottom-right",
       fabActions: [
         {
-          name: "new_exercise",
+          name: "new_workout",
           icon: "fitness_center",
           tooltip: "New Exercise",
         },
         {
-          name: "new_workout",
+          name: "new_exercise",
           icon: "view_list",
           tooltip: "New Workout",
         },

@@ -1,5 +1,259 @@
 <template>
   <div class="workout-play">
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="/assets/breadcrumb_background.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/workouts" class="sb-item">Workouts</a>
+                  <span class="sb-item">{{ workout.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Site Breadcrumb End -->
+    <!-- Class Section Begin-->
+    <section class="class-section spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="section-title">
+                  <h2>{{ workout.name }}</h2>
+                  <p>{{ workout.exercises.length }} exercises</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <a href="#" class="primary-btn">BEGIN</a>
+              </div>
+            </div>
+            <!-- BEGIN TAB PANEL -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="class-item">
+                  <div class="tab-content">
+                    <div class="tab-pane fade-in active" id="exercise" role="tabpanel">
+                      <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+                        <div class="single-class-item">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <img src="/img/class/class-1.jpg" alt="" />
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                              <div class="class-text">
+                                <h3>{{ exercise.name }}</h3>
+                                <p>{{ exercise.reps }} reps</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="tab-pane fade" id="class-2" role="tabpanel">
+                      <div class="single-class-item">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img src="/img/class/author-2.jpg" alt="" />
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                            <div class="class-text">
+                              <h3>Racing running</h3>
+                              <p>
+                                Body Building, the original LES MILLS barbell class, will sculpt, tone and strengthen
+                                your entire body, fast! Focusing on low weight loads and high repetition movements,
+                                you'll burn fat, gain strength and quickly produce lean body muscle conditioning. All
+                                the benefits of working with weighs in one action packed, highly physical class. The
+                                world’s fastest way to get in shape. Find your Lessmills Bodypump class here.
+                              </p>
+                              <a href="#" class="schedule-btn">
+                                View Schedule
+                                <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="class-3" role="tabpanel">
+                      <div class="single-class-item">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img src="/img/class/author-2.jpg" alt="" />
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                            <div class="class-text">
+                              <h3>Yoga Fitness</h3>
+                              <p>
+                                Body Building, the original LES MILLS barbell class, will sculpt, tone and strengthen
+                                your entire body, fast! Focusing on low weight loads and high repetition movements,
+                                you'll burn fat, gain strength and quickly produce lean body muscle conditioning. All
+                                the benefits of working with weighs in one action packed, highly physical class. The
+                                world’s fastest way to get in shape. Find your Lessmills Bodypump class here.
+                              </p>
+                              <a href="#" class="schedule-btn">
+                                View Schedule
+                                <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="class-4" role="tabpanel">
+                      <div class="single-class-item">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img src="/img/class/author-3.jpg" alt="" />
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                            <div class="class-text">
+                              <h3>Kick boxing</h3>
+                              <p>
+                                Body Building, the original LES MILLS barbell class, will sculpt, tone and strengthen
+                                your entire body, fast! Focusing on low weight loads and high repetition movements,
+                                you'll burn fat, gain strength and quickly produce lean body muscle conditioning. All
+                                the benefits of working with weighs in one action packed, highly physical class. The
+                                world’s fastest way to get in shape. Find your Lessmills Bodypump class here.
+                              </p>
+                              <a href="#" class="schedule-btn">
+                                View Schedule
+                                <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="class-5" role="tabpanel">
+                      <div class="single-class-item">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img src="/img/class/class-1.jpg" alt="" />
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                            <div class="class-text">
+                              <h3>Cardio workout</h3>
+                              <p>
+                                Body Building, the original LES MILLS barbell class, will sculpt, tone and strengthen
+                                your entire body, fast! Focusing on low weight loads and high repetition movements,
+                                you'll burn fat, gain strength and quickly produce lean body muscle conditioning. All
+                                the benefits of working with weighs in one action packed, highly physical class. The
+                                world’s fastest way to get in shape. Find your Lessmills Bodypump class here.
+                              </p>
+                              <a href="#" class="schedule-btn">
+                                View Schedule
+                                <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="class-6" role="tabpanel">
+                      <div class="single-class-item">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <img src="/img/class/class-1.jpg" alt="" />
+                          </div>
+                          <div class="col-lg-5 offset-lg-1">
+                            <div class="class-text">
+                              <h3>Martial Arts</h3>
+                              <p>
+                                Body Building, the original LES MILLS barbell class, will sculpt, tone and strengthen
+                                your entire body, fast! Focusing on low weight loads and high repetition movements,
+                                you'll burn fat, gain strength and quickly produce lean body muscle conditioning. All
+                                the benefits of working with weighs in one action packed, highly physical class. The
+                                world’s fastest way to get in shape. Find your Lessmills Bodypump class here.
+                              </p>
+                              <a href="#" class="schedule-btn">
+                                View Schedule
+                                <i class="fa fa-long-arrow-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- BOTTOM CARDS -->
+            <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="class-author">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li>
+                        <a data-toggle="tab" class="active" href="#exercise" role="tab">
+                          <div class="author-text">
+                            <img src="/img/class/author-1.jpg" alt="" />
+                            <h5>{{ exercise.name }}</h5>
+                          </div>
+                        </a>
+                      </li>
+
+                      <!-- <li>
+                      <a data-toggle="tab" href="#class-2" role="tab">
+                        <div class="author-text">
+                          <img src="/img/class/author-2.jpg" alt="" />
+                          <h5>Racing runing</h5>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="#class-3" role="tab">
+                        <div class="author-text">
+                          <img src="/img/class/author-3.jpg" alt="" />
+                          <h5>Yoga Fitness</h5>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="#class-4" role="tab">
+                        <div class="author-text">
+                          <img src="/img/class/author-4.jpg" alt="" />
+                          <h5>Kick boxing</h5>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="#class-5" role="tab">
+                        <div class="author-text">
+                          <img src="/img/class/author-5.jpg" alt="" />
+                          <h5>Cardio workout</h5>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="#class-6" role="tab">
+                        <div class="author-text">
+                          <img src="/img/class/author-6.jpg" alt="" />
+                          <h5>Martial Arts</h5>
+                        </div>
+                      </a>
+                    </li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- BOTTOM CARDS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Class Section End -->
+
+    <!-- ORIGINAL VUE -->
     <ul id="example-1">
       <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
         <h1>{{ exercise.name }}</h1>
@@ -11,9 +265,6 @@
       </div>
     </ul>
     <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
-    |
-    <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
-    <!-- Button trigger modal -->
     <button
       type="button"
       class="btn btn-primary"
@@ -52,6 +303,7 @@
         </div>
       </div>
     </div>
+    <!-- ORIGINAL VUE -->
   </div>
 </template>
 
@@ -78,31 +330,10 @@ export default {
         console.log(this.workout);
       });
     },
-    destroyExercise: function (exercise) {
-      var params = {
-        exercise_id: exercise.id,
-        workout_id: this.workout.id,
-      };
-      axios.delete("/api/workout_exercises/", { data: params }).then((response) => {
-        console.log("exercises destroy", response);
-        // in exercise object, remove this exercise - will not refresh
-        this.workout.exercises.splice(this.workout.exercises.indexOf(exercise), 1);
-      });
-    },
     getExercises: function () {
       axios.get("api/exercises").then((response) => {
         this.exercises = response.data;
         console.log(this.exercises);
-      });
-    },
-    addExercise: function (exercise) {
-      var params = {
-        exercise_id: exercise.id,
-        workout_id: this.workout.id,
-      };
-      axios.post("api/workout_exercises/", params).then((response) => {
-        console.log(response);
-        //add to workout_exercises table somehow
       });
     },
   },
@@ -117,5 +348,8 @@ export default {
 }
 #info-button {
   margin: 4px;
+}
+.workout-play {
+  background: white;
 }
 </style>

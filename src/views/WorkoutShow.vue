@@ -9,7 +9,7 @@
               <div class="site-text">
                 <h2>About Us</h2>
                 <div class="site-breadcrumb">
-                  <a href="/home" class="sb-item">Home</a>
+                  <a href="/workouts" class="sb-item">Wokrouts</a>
                   <span class="sb-item">{{ workout.name }} Workout</span>
                 </div>
               </div>
@@ -49,10 +49,10 @@
                     </router-link>
                   </div> -->
                     <router-link v-bind:to="`workouts/${workout.id}/edit`">
-                      <a class="blog-btn">
+                      <button class="blog-btn">
                         Edit Workout
                         <i class="fa fa-angle-double-right"></i>
-                      </a>
+                      </button>
                     </router-link>
                   </span>
                 </div>
@@ -136,7 +136,7 @@
         </button>
       </div>
 
-      <!-- Modal -->
+      <!--  Add Exercise Modal -->
       <div
         class="modal fade"
         id="exampleModal"
@@ -153,11 +153,13 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
-              <h3>{{ exercise.name }}</h3>
-              <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
-              <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
-            </div>
+            <form v-on:submit.prevent="updateWorkout(workout)">
+              <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
+                <h3>{{ exercise.name }}</h3>
+                <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+                <button type="button" class="primary-btn" v-on:click="addExercise(exercise)">Add</button>
+              </div>
+            </form>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
             </div>
@@ -165,6 +167,49 @@
         </div>
       </div>
     </div>
+    <!-- End Add Exercise Modal -->
+
+    <!-- WORKOUT EDIT MODAL -->
+    <!-- <div
+      class="modal fade"
+      id="workoutEditModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="workoutEditModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="workoutEditModalLabel">{{ workout.name }} || Workout Edit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form v-on:submit.prevent="updateWorkout(workout)">
+            <h1>
+              {{ workout.name }}
+            </h1>
+            <ul>
+              <li class="text-danger" v-for="error in errors" v-bind:key="error">
+                {{ error }}
+              </li>
+            </ul>
+            <div>
+              Name:
+              <input type="text" v-model="workout.name" />
+              <input type="submit" class="btn btn-primary" value="Update" />
+              <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyWorkout(workout)">
+                Delete
+              </button>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <!-- ORIGINAL VUE -->
   </div>
 </template>
@@ -191,6 +236,22 @@ export default {
         this.workout = response.data;
         console.log(this.workout);
       });
+    },
+    updateWorkout: function (workout) {
+      console.log("creating workout");
+      var params = {
+        name: workout.name,
+      };
+      axios
+        .patch("/api/workouts/" + workout.id, params)
+        .then((response) => {
+          console.log("workouts update", response);
+          this.$router.push("/workouts");
+        })
+        .catch((error) => {
+          console.log("workouts update error", error.response);
+          this.errors = error.response.data.errors;
+        });
     },
     destroyExercise: function (exercise) {
       var params = {

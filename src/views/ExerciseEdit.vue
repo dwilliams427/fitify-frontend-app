@@ -56,8 +56,8 @@
             Image URL:
             <input type="text" v-model="exercise.image_url" />
           </div>
-          <input type="submit" class="btn btn-primary" value="Update" />
-          <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
+          <input type="submit" class="primary-btn" value="Update" />
+          <button type="submit" class="schedule-btn" value="Update" v-on:click="destroyExercise(exercise)">
             Delete
           </button>
         </div>

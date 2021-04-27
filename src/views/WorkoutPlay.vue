@@ -19,6 +19,33 @@
       </section>
     </div>
     <!-- Site Breadcrumb End -->
+
+    <div>
+      <b-card no-body>
+        <b-tabs card>
+          <!-- Render Tabs, supply a unique `key` to each tab -->
+          <b-tab
+            v-for="exercise in workout.exercises"
+            :key="exercise.id"
+            :title="'Exercise ' + workout.exercises.indexOf(exercise) + ' of ' + workout.exercises.length"
+          >
+            <h1>{{ exercise.name }}</h1>
+            <h5>{{ exercise.reps }} reps</h5>
+          </b-tab>
+
+          <!-- New Tab Button (Using tabs-end slot) -->
+          <template #tabs-end>
+            <b-nav-item role="presentation" @click.prevent="newTab" href="#"><b>+</b></b-nav-item>
+          </template>
+
+          <!-- Render this if no tabs -->
+          <template #empty>
+            <div class="text-center text-muted">You have no exercises!</div>
+          </template>
+        </b-tabs>
+      </b-card>
+    </div>
+
     <!-- Class Section Begin-->
     <section class="class-section spad">
       <div class="container">
@@ -36,12 +63,12 @@
               </div>
             </div>
             <!-- BEGIN TAB PANEL -->
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="class-item">
-                  <div class="tab-content">
-                    <div class="tab-pane fade-in active" id="exercise" role="tabpanel">
-                      <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+            <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="class-item">
+                    <div class="tab-content">
+                      <div class="tab-pane fade-in active" id="exercise" role="tabpanel">
                         <div class="single-class-item">
                           <div class="row">
                             <div class="col-lg-6">
@@ -187,11 +214,11 @@
               </div>
             </div>
             <!-- BOTTOM CARDS -->
-            <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="class-author">
-                    <ul class="nav nav-tabs" role="tablist">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="class-author">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
                       <li>
                         <a data-toggle="tab" class="active" href="#exercise" role="tab">
                           <div class="author-text">
@@ -241,8 +268,8 @@
                         </div>
                       </a>
                     </li> -->
-                    </ul>
-                  </div>
+                    </div>
+                  </ul>
                 </div>
               </div>
               <!-- BOTTOM CARDS -->
@@ -316,12 +343,17 @@ export default {
       workout: [],
       exercises: [],
       exercise: {},
+      tabs: [],
+      tabCounter: 0,
     };
   },
   created: function () {
     this.showWorkouts();
   },
   methods: {
+    newTab() {
+      this.tabs.push(this.tabCounter++);
+    },
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         // console.log("showing workout", response);

@@ -9,7 +9,7 @@
               <div class="site-text">
                 <h2>About Us</h2>
                 <div class="site-breadcrumb">
-                  <a href="/workouts" class="sb-item">Wokrouts</a>
+                  <a href="/workouts" class="sb-item">Workouts</a>
                   <span class="sb-item">{{ workout.name }} Workout</span>
                 </div>
               </div>
@@ -220,7 +220,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      workout: [],
+      workout: {},
       exercises: [],
       exercise: {},
     };

@@ -21,6 +21,21 @@
     </div>
     <!-- Site Breadcrumb End -->
 
+    <div class="container">
+      <!-- <ul id="example-1">
+        <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+          <h1>{{ exercise.name }}</h1>
+          <h5>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+          <p>user: {{ exercise.user_id }}</p>
+          <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
+            Delete
+          </button>
+        </div>
+      </ul>
+      <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
+      | -->
+      <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
+    </div>
     <!-- ORIGINAL VUE -->
 
     <button
@@ -92,7 +107,7 @@ export default {
         // console.log("workout exercises", this.workout.exercises);
         this.workout = response.data;
         console.log(this.workout);
-        this.exercises.push(this.workout.exercises);
+        // this.exercises.push(this.workout.exercises);
       });
     },
     getExercises: function () {

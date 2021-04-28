@@ -2,14 +2,14 @@
   <div class="workout-index">
     <!-- Site Breadcrumb Begin -->
     <div>
-      <section class="breadcrumb-section set-bg" data-setbg="assets/about-breadcrumb-bg.jpg">
+      <img src="/img/breadcrumb_background.png" alt="" />
+      <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb_background.png">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
                 <div class="site-breadcrumb">
-                  <a href="/home" class="sb-item">Home</a>
+                  <a href="./home.html" class="sb-item">Home</a>
                   <span class="sb-item">Workouts</span>
                 </div>
               </div>
@@ -236,5 +236,8 @@ export default {
 }
 .primary-btn {
   justify-content: right;
+}
+.breadcrumb-section set-bg {
+  background-image: url("/img/breadcrumb_background.png");
 }
 </style>

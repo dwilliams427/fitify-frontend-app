@@ -38,9 +38,6 @@
                 <!-- <li><a href="./contact.html">Contacts</a></li> -->
               </ul>
             </nav>
-            <div class="nav-right search-switch">
-              <i class="ti-search"></i>
-            </div>
           </div>
           <div id="mobile-menu-wrap"></div>
         </div>

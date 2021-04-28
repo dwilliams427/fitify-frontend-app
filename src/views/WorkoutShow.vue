@@ -73,7 +73,7 @@
                         <h5>{{ exercise.name }}</h5>
                         <span>
                           <i class="material-icons">timer</i>
-                          | {{ exercise.length }} seconds
+                          | {{ exercise.time }} seconds
                         </span>
                         <span>{{ exercise.reps }} reps</span>
                         <span>{{ exercise.sets }} sets</span>
@@ -112,7 +112,7 @@
       <!-- <ul id="example-1">
         <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
           <h1>{{ exercise.name }}</h1>
-          <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+          <h5>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
           <p>user: {{ exercise.user_id }}</p>
           <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
             Delete
@@ -156,7 +156,7 @@
             <form v-on:submit.prevent="updateWorkout(workout)">
               <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
                 <h3>{{ exercise.name }}</h3>
-                <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+                <p>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
                 <button type="button" class="primary-btn" v-on:click="addExercise(exercise)">Add</button>
               </div>
             </form>

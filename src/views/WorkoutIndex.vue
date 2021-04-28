@@ -45,7 +45,7 @@
                       </div>
                       <div class="trainer-text">
                         <h5>{{ workout.name }}</h5>
-                        <span>{{ workout.exercises.length }} exercises</span>
+                        <!-- <span>{{ workout.exercises.time }} exercises</span> -->
 
                         <router-link v-bind:to="`workouts/${workout.id}/play`">
                           <!-- <button type="button" class="btn btn-success">PLAY</button> -->
@@ -153,6 +153,7 @@ export default {
   },
   data: function () {
     return {
+      num: 0,
       workouts: [],
       exercises: [],
       bgColor: "#f34e3a",
@@ -185,6 +186,8 @@ export default {
       axios.get("/api/workouts").then((response) => {
         console.log("workouts index", response);
         this.workouts = response.data;
+        // this.num = this.workouts.exercises.length;
+        // console.log("num of exercises:" + this.num);
       });
     },
     workoutInfo: function (workout) {

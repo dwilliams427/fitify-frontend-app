@@ -35,7 +35,7 @@
                 <input type="text" class="form-control" v-model="name" />
                 <br />
                 <label>Length:</label>
-                <input type="text" class="form-control" v-model="length" />
+                <input type="text" class="form-control" v-model="time" />
                 <br />
                 <label>Reps:</label>
                 <input type="text" class="form-control" v-model="reps" />
@@ -65,7 +65,7 @@ export default {
   data: function () {
     return {
       name: "",
-      length: "",
+      time: "",
       reps: "",
       sets: "",
       video_url: "",
@@ -82,7 +82,7 @@ export default {
         name: this.name,
         reps: this.reps,
         sets: this.sets,
-        length: this.length,
+        time: this.time,
         video_url: this.video_url,
         image_url: this.image_url,
         user_id: this.user_id,

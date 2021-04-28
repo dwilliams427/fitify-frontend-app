@@ -38,7 +38,8 @@
           </div>
           <div>
             Length:
-            <input type="number" v-model="exercise.length" />
+            <input type="number" v-model="exercise.time" />
+            seconds
           </div>
           <div>
             Sets:
@@ -86,7 +87,7 @@ export default {
       console.log("creating exercise");
       var params = {
         name: exercise.name,
-        length: exercise.length,
+        time: exercise.time,
         reps: exercise.reps,
         sets: exercise.sets,
         video_url: exercise.video_url,

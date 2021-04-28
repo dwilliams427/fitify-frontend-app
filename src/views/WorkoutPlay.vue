@@ -51,7 +51,7 @@
           </div>
           <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
             <h3>{{ exercise.name }}</h3>
-            <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+            <p>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
             <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
           </div>
           <div class="modal-footer">

@@ -20,7 +20,6 @@
     </div>
     <!-- Site Breadcrumb End -->
 
-    <!-- CARD BEGIN -->
     <div>
       <section class="about-page-trainer spad">
         <div class="container">
@@ -30,13 +29,13 @@
                 <div class="section-title">
                   <h2>{{ workout.name }}</h2>
                   <span>
-                    <h5>{{ workout.exercises.length }} exercises</h5>
+                    <!-- <h5>{{ workout.exercises.length }} exercises</h5> -->
                   </span>
                 </div>
                 <!-- PLAY BUTTON -->
                 <div class="text-center">
                   <span>
-                    <router-link v-bind:to="`workouts/${workout.id}/play`">
+                    <router-link v-bind:to="`/workouts/${workout.id}/play`">
                       <button type="button" class="primary-btn">
                         PLAY
                         <i class="ti-angle-double-right"></i>
@@ -48,7 +47,7 @@
                       <a href="">More Info</a>
                     </router-link>
                   </div> -->
-                    <router-link v-bind:to="`workouts/${workout.id}/edit`">
+                    <router-link v-bind:to="`/workouts/${workout.id}/edit`">
                       <button class="blog-btn">
                         Edit Workout
                         <i class="fa fa-angle-double-right"></i>
@@ -60,12 +59,14 @@
               </div>
             </div>
           </div>
+
+          <!-- CARD BEGIN -->
           <div class="card-deck">
             <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
               <div class="row-lg-4">
                 <div class="col-lg-12">
-                  <router-link v-bind:to="`exercises/${exercise.id}/edit`">
-                    <div class="single-trainer-item">
+                  <div class="single-trainer-item">
+                    <router-link v-bind:to="`/exercises/${exercise.id}/edit`">
                       <div class="trainer-pic">
                         <img src="img/trainer/trainer-1.jpg" alt="" />
                       </div>
@@ -82,22 +83,15 @@
                             <a href="">More Info</a>
                           </router-link>
                         </div> -->
-                        <br />
-                        <br />
-                        <!-- DESTROY BUTTON -->
-                        <div>
-                          <button
-                            type="button"
-                            class="primary-btn"
-                            value="Update"
-                            v-on:click="destroyExercise(exercise)"
-                          >
-                            DELETE
-                          </button>
-                        </div>
                       </div>
+                      <!-- DESTROY BUTTON -->
+                    </router-link>
+                    <div>
+                      <button type="button" class="primary-btn" value="Update" v-on:click="destroyExercise(exercise)">
+                        DELETE
+                      </button>
                     </div>
-                  </router-link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -123,7 +117,7 @@
       | -->
       <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
 
-      <!-- Button trigger modal -->
+      <!-- Button trigger exercise modal -->
       <div class="text-center">
         <button
           type="button"
@@ -153,11 +147,11 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form v-on:submit.prevent="updateWorkout(workout)">
+            <form v-on:submit="updateWorkout(workout)">
               <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
                 <h3>{{ exercise.name }}</h3>
                 <p>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
-                <button type="button" class="primary-btn" v-on:click="addExercise(exercise)">Add</button>
+                <button type="submit" class="primary-btn" v-on:click="addExercise(exercise)">Add</button>
               </div>
             </form>
             <div class="modal-footer">
@@ -168,6 +162,76 @@
       </div>
     </div>
     <!-- End Add Exercise Modal -->
+
+    <!-- BEGIN EDIT WORKOUT MODAL -->
+    <div class="container">
+      <!-- <ul id="example-1">
+        <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
+          <h1>{{ exercise.name }}</h1>
+          <h5>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+          <p>user: {{ exercise.user_id }}</p>
+          <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
+            Delete
+          </button>
+        </div>
+      </ul>
+      <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
+      | -->
+      <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
+
+      <!-- Button trigger modal -->
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#workoutModal"
+          v-on:click="getWorkout()"
+        >
+          Edit Workout
+        </button>
+      </div>
+
+      <!--  edit workout Modal -->
+      <div
+        class="modal fade"
+        id="workoutModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="editWorkoutLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Workout</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form v-on:submit="updateWorkout(workout)">
+              <h1>
+                {{ workout.name }}
+              </h1>
+              <ul>
+                <li class="text-danger" v-for="error in errors" v-bind:key="error">
+                  {{ error }}
+                </li>
+              </ul>
+              <div>
+                Name:
+                <input type="text" v-model="workout.name" />
+                <input type="submit" class="btn btn-primary" value="Update" />
+              </div>
+            </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END EDIT WORKOUT MODAL -->
 
     <!-- WORKOUT EDIT MODAL -->
     <!-- <div
@@ -223,6 +287,7 @@ export default {
       workout: {},
       exercises: [],
       exercise: {},
+      errors: [],
     };
   },
   created: function () {
@@ -262,6 +327,7 @@ export default {
         console.log("exercises destroy", response);
         // in exercise object, remove this exercise - will not refresh
         this.workout.exercises.splice(this.workout.exercises.indexOf(exercise), 1);
+        // this.$router.push("/workouts/" + this.$route.params.workout_id);
       });
     },
     getExercises: function () {
@@ -277,6 +343,12 @@ export default {
       };
       axios.post("api/workout_exercises/", params).then((response) => {
         console.log(response);
+      });
+    },
+    getWorkout: function () {
+      axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
+        console.log("showing workout", response);
+        this.workout = response.data;
       });
     },
   },

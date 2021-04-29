@@ -25,6 +25,11 @@
 
     <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
 
+    <!-- AUTOPLAY -->
+    <autoplay-example></autoplay-example>
+    <hr />
+    <thumbnail-example></thumbnail-example>
+
     <!-- BEGIN TAB PANEL -->
     <div class="container">
       <b-card no-body>
@@ -93,8 +98,14 @@
 
 <script>
 import axios from "axios";
+import AutoplayExample from "../components/AutoplayExample";
+import ThumbnailExample from "../components/ThumbnailsExample";
 
 export default {
+  components: {
+    AutoplayExample,
+    ThumbnailExample,
+  },
   data: function () {
     return {
       workout: {},

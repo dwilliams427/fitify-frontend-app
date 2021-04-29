@@ -26,19 +26,16 @@
     <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
 
     <!-- BEGIN TAB PANEL -->
-    <div>
+    <div class="container">
       <b-card no-body>
         <b-tabs card>
           <!-- Render Tabs, supply a unique `key` to each tab -->
-          <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise" :title="'Tab ' + exercise">
-            {{ exercise }}
-            <b-button size="sm" variant="danger" class="float-right" @click="closeTab(exercise)">Close tab</b-button>
+          <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise.id" :title="exercise.name">
+            <div class="text-center">
+              <img :src="exercise.image_url" alt="" />
+              {{ exercise }}
+            </div>
           </b-tab>
-
-          <!-- New Tab Button (Using tabs-end slot) -->
-          <template #tabs-end>
-            <b-nav-item role="presentation" @click.prevent="newTab" href="#"><b>+</b></b-nav-item>
-          </template>
 
           <!-- Render this if no tabs -->
           <template #empty>
@@ -130,16 +127,6 @@ export default {
         this.exercises = response.data;
         console.log(this.exercises);
       });
-    },
-    closeTab(x) {
-      for (let i = 0; i < this.tabs.length; i++) {
-        if (this.tabs[i] === x) {
-          this.tabs.splice(i, 1);
-        }
-      }
-    },
-    newTab() {
-      this.tabs.push(this.tabCounter++);
     },
   },
 };

@@ -2,14 +2,14 @@
   <div class="workout-index">
     <!-- Site Breadcrumb Begin -->
     <div>
-      <section class="breadcrumb-section set-bg" data-setbg="assets/about-breadcrumb-bg.jpg">
+      <img src="/img/breadcrumb_background.png" alt="" />
+      <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb_background.png">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
                 <div class="site-breadcrumb">
-                  <a href="/home" class="sb-item">Home</a>
+                  <a href="./home.html" class="sb-item">Home</a>
                   <span class="sb-item">Workouts</span>
                 </div>
               </div>
@@ -45,7 +45,7 @@
                       </div>
                       <div class="trainer-text">
                         <h5>{{ workout.name }}</h5>
-                        <span>{{ workout.exercises.length }} exercises</span>
+                        <!-- <span>{{ workout.exercises.time }} exercises</span> -->
 
                         <router-link v-bind:to="`workouts/${workout.id}/play`">
                           <!-- <button type="button" class="btn btn-success">PLAY</button> -->
@@ -153,6 +153,7 @@ export default {
   },
   data: function () {
     return {
+      num: 0,
       workouts: [],
       exercises: [],
       bgColor: "#f34e3a",
@@ -185,6 +186,8 @@ export default {
       axios.get("/api/workouts").then((response) => {
         console.log("workouts index", response);
         this.workouts = response.data;
+        // this.num = this.workouts.exercises.length;
+        // console.log("num of exercises:" + this.num);
       });
     },
     workoutInfo: function (workout) {
@@ -233,5 +236,8 @@ export default {
 }
 .primary-btn {
   justify-content: right;
+}
+.breadcrumb-section set-bg {
+  background-image: url("/img/breadcrumb_background.png");
 }
 </style>

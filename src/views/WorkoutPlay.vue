@@ -1,20 +1,55 @@
 <template>
   <div class="workout-play">
-    <ul id="example-1">
-      <div v-for="exercise in workout.exercises" v-bind:key="exercise.id">
-        <h1>{{ exercise.name }}</h1>
-        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
-        <p>user: {{ exercise.user_id }}</p>
-        <button type="submit" class="btn btn-danger" value="Update" v-on:click="destroyExercise(exercise)">
-          Delete
-        </button>
-      </div>
-    </ul>
-    <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
-    |
-    <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
-    <!-- Button trigger modal -->
-    <button
+    <!-- Site Breadcrumb Begin -->
+    <div>
+      <section class="breadcrumb-section set-bg" data-setbg="/assets/breadcrumb_background.png">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="site-text">
+                <h2>About Us</h2>
+                <div class="site-breadcrumb">
+                  <a href="/workouts" class="sb-item">Workouts</a>
+                  <span class="sb-item">{{ workout.name }}</span>
+                  <span class="sb-item">Play</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Site Breadcrumb End -->
+
+    <!-- ORIGINAL VUE -->
+
+    <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
+
+    <!-- BEGIN TAB PANEL -->
+    <div class="container">
+      <b-card no-body>
+        <b-tabs card>
+          <!-- Render Tabs, supply a unique `key` to each tab -->
+          <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise.id" :title="exercise.name">
+            <div class="text-center">
+              <img :src="exercise.image_url" alt="" />
+              {{ exercise }}
+            </div>
+          </b-tab>
+
+          <!-- Render this if no tabs -->
+          <template #empty>
+            <div class="text-center text-muted">
+              There are no exercises
+              <br />
+            </div>
+          </template>
+        </b-tabs>
+      </b-card>
+    </div>
+    <!-- END TAB PANEL -->
+
+    <!-- <button
       type="button"
       class="btn btn-primary"
       data-toggle="modal"
@@ -22,9 +57,9 @@
       v-on:click="getExercises()"
     >
       Add an Exercise
-    </button>
+    </button> -->
     <!-- Modal -->
-    <div
+    <!-- <div
       class="modal fade"
       id="exampleModal"
       tabindex="-1"
@@ -42,7 +77,7 @@
           </div>
           <div class="modal-body" v-for="exercise in this.exercises" v-bind:key="exercise.id">
             <h3>{{ exercise.name }}</h3>
-            <p>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
+            <p>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</p>
             <button type="button" class="btn btn-primary" v-on:click="addExercise(exercise)">Add</button>
           </div>
           <div class="modal-footer">
@@ -51,7 +86,8 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    <!-- ORIGINAL VUE -->
   </div>
 </template>
 
@@ -61,48 +97,35 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      workout: [],
+      workout: {},
       exercises: [],
       exercise: {},
+      tabs: [],
+      tabCounter: 0,
     };
   },
   created: function () {
-    this.showWorkouts();
+    this.showWorkout();
+    this.getExercises();
   },
   methods: {
-    showWorkouts: function () {
+    // newTab() {
+    //   this.tabs.push(this.tabCounter++);
+    // },
+    showWorkout: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         // console.log("showing workout", response);
         // console.log("workout exercises", this.workout.exercises);
         this.workout = response.data;
         console.log(this.workout);
-      });
-    },
-    destroyExercise: function (exercise) {
-      var params = {
-        exercise_id: exercise.id,
-        workout_id: this.workout.id,
-      };
-      axios.delete("/api/workout_exercises/", { data: params }).then((response) => {
-        console.log("exercises destroy", response);
-        // in exercise object, remove this exercise - will not refresh
-        this.workout.exercises.splice(this.workout.exercises.indexOf(exercise), 1);
+
+        // this.exercises.push(this.workout.exercises);
       });
     },
     getExercises: function () {
-      axios.get("api/exercises").then((response) => {
+      axios.get("/api/exercises").then((response) => {
         this.exercises = response.data;
         console.log(this.exercises);
-      });
-    },
-    addExercise: function (exercise) {
-      var params = {
-        exercise_id: exercise.id,
-        workout_id: this.workout.id,
-      };
-      axios.post("api/workout_exercises/", params).then((response) => {
-        console.log(response);
-        //add to workout_exercises table somehow
       });
     },
   },
@@ -117,5 +140,8 @@ export default {
 }
 #info-button {
   margin: 4px;
+}
+.workout-play {
+  background: white;
 }
 </style>

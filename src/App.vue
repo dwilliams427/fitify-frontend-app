@@ -38,9 +38,6 @@
                 <!-- <li><a href="./contact.html">Contacts</a></li> -->
               </ul>
             </nav>
-            <div class="nav-right search-switch">
-              <i class="ti-search"></i>
-            </div>
           </div>
           <div id="mobile-menu-wrap"></div>
         </div>
@@ -83,43 +80,7 @@
     <router-view />
     <!-- Footer Section Begin -->
     <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="footer-form set-bg" data-setbg="img/contact-form-bg.jpg">
-              <div class="row">
-                <div class="col-lg-10">
-                  <div class="section-title">
-                    <h2>Request A Call Back</h2>
-                    <p>
-                      Shape your body and burn fat with strength training. With the right equipment such as free weights
-                      or resistance machines.
-                    </p>
-                  </div>
-                  <form action="#">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <input type="text" placeholder="Name" />
-                      </div>
-                      <div class="col-lg-6">
-                        <input type="text" placeholder="Email" />
-                      </div>
-                      <div class="col-lg-12">
-                        <input type="text" placeholder="Subject" />
-                        <textarea placeholder="Message"></textarea>
-                        <button type="submit">
-                          Submit
-                          <i class="ti-angle-double-right"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="container-fluid"></div>
       <div class="register">
         <div class="container">
           <div class="row">

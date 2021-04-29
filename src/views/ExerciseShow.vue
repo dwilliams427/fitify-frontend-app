@@ -14,7 +14,7 @@
 
       <ul id="example-1">
         <h1>{{ exercise.name }}</h1>
-        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+        <h5>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
         <p>user: {{ exercise.user_id }}</p>
       </ul>
       <router-link v-bind:to="`/exercises/${exercise.id}/edit`">Edit exercise</router-link>

@@ -45,17 +45,9 @@
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
-                        <span>
-                          <i class="material-icons">timer</i>
-                          | {{ exercise.length }} seconds
-                        </span>
+                        <span>{{ exercise.time }} seconds</span>
                         <span>{{ exercise.reps }} reps</span>
                         <span>{{ exercise.sets }} sets</span>
-                        <div class="trainer-social">
-                          <router-link v-bind:to="`exercises/${exercise.id}/edit`">
-                            <a href="">More Info</a>
-                          </router-link>
-                        </div>
                       </div>
                     </div>
                   </router-link>
@@ -76,7 +68,7 @@
 
       <div v-for="exercise in exercises" v-bind:key="exercise.id">
         <h1>{{ exercise.name }}</h1>
-        <h5>{{ exercise.length }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
+        <h5>{{ exercise.time }} seconds | {{ exercise.reps }} reps | {{ exercise.sets }} sets</h5>
         <router-link v-bind:to="`exercises/${exercise.id}`">
           <button type="button" class="btn btn-link">More Info</button>
         </router-link>
@@ -109,12 +101,12 @@ export default {
       position: "bottom-right",
       fabActions: [
         {
-          name: "new_exercise",
+          name: "new_workout",
           icon: "fitness_center",
           tooltip: "New Exercise",
         },
         {
-          name: "new_workout",
+          name: "new_exercise",
           icon: "view_list",
           tooltip: "New Workout",
         },

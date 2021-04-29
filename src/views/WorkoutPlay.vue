@@ -10,8 +10,8 @@
                 <h2>About Us</h2>
                 <div class="site-breadcrumb">
                   <a href="/workouts" class="sb-item">Workouts</a>
-                  <!-- <span class="sb-item">{{ workout.name }}</span> -->
-                  <span class="sb-item">some name</span>
+                  <span class="sb-item">{{ workout.name }}</span>
+                  <span class="sb-item">Play</span>
                 </div>
               </div>
             </div>
@@ -23,7 +23,36 @@
 
     <!-- ORIGINAL VUE -->
 
-    <button
+    <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
+
+    <!-- BEGIN TAB PANEL -->
+    <div>
+      <b-card no-body>
+        <b-tabs card>
+          <!-- Render Tabs, supply a unique `key` to each tab -->
+          <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise" :title="'Tab ' + exercise">
+            {{ exercise }}
+            <b-button size="sm" variant="danger" class="float-right" @click="closeTab(exercise)">Close tab</b-button>
+          </b-tab>
+
+          <!-- New Tab Button (Using tabs-end slot) -->
+          <template #tabs-end>
+            <b-nav-item role="presentation" @click.prevent="newTab" href="#"><b>+</b></b-nav-item>
+          </template>
+
+          <!-- Render this if no tabs -->
+          <template #empty>
+            <div class="text-center text-muted">
+              There are no exercises
+              <br />
+            </div>
+          </template>
+        </b-tabs>
+      </b-card>
+    </div>
+    <!-- END TAB PANEL -->
+
+    <!-- <button
       type="button"
       class="btn btn-primary"
       data-toggle="modal"
@@ -31,7 +60,7 @@
       v-on:click="getExercises()"
     >
       Add an Exercise
-    </button>
+    </button> -->
     <!-- Modal -->
     <!-- <div
       class="modal fade"
@@ -76,30 +105,41 @@ export default {
       exercise: {},
       tabs: [],
       tabCounter: 0,
-      max: this.workout.exercises.length,
     };
   },
-  mounted: function () {
-    this.showWorkouts();
+  created: function () {
+    this.showWorkout();
+    this.getExercises();
   },
   methods: {
-    newTab() {
-      this.tabs.push(this.tabCounter++);
-    },
-    showWorkouts: function () {
+    // newTab() {
+    //   this.tabs.push(this.tabCounter++);
+    // },
+    showWorkout: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         // console.log("showing workout", response);
         // console.log("workout exercises", this.workout.exercises);
         this.workout = response.data;
         console.log(this.workout);
-        this.exercises.push(this.workout.exercises);
+
+        // this.exercises.push(this.workout.exercises);
       });
     },
     getExercises: function () {
-      axios.get("api/exercises").then((response) => {
+      axios.get("/api/exercises").then((response) => {
         this.exercises = response.data;
         console.log(this.exercises);
       });
+    },
+    closeTab(x) {
+      for (let i = 0; i < this.tabs.length; i++) {
+        if (this.tabs[i] === x) {
+          this.tabs.splice(i, 1);
+        }
+      }
+    },
+    newTab() {
+      this.tabs.push(this.tabCounter++);
     },
   },
 };

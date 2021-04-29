@@ -13,8 +13,8 @@
     </div>
 
     <splide :options="options" has-slider-wrapper>
-      <splide-slide v-for="slide in slides" :key="slide.src">
-        <img :src="slide.src" alt="slide.alt" />
+      <splide-slide v-for="exercise in workout.exercises" :key="exercise.name">
+        <img :src="exercise.image_url" alt="slide.alt" />
 
         <!-- <splide-slide v-for="exercise in workout.exercises" :key="exercise.src">
         <img :src="exercise.image_url" alt="alt" :interval="exercise.time" /> -->

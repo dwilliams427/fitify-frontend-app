@@ -1,8 +1,10 @@
 <template>
   <div class="workout-index">
     <!-- Site Breadcrumb Begin -->
+    <br />
+    <br />
     <div>
-      <img src="/img/breadcrumb_background.png" alt="" />
+      <!-- <img src="/img/breadcrumb_background.png" alt="" /> -->
       <section class="breadcrumb-section set-bg" data-setbg="/img/breadcrumb_background.png">
         <div class="container">
           <div class="row">

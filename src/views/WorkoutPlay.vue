@@ -45,15 +45,15 @@
     <!-- BEGIN TAB PANEL -->
     <div class="container">
       <b-card no-body>
-        <b-tabs card>
+        <b-tabs card v-model="tabIndex">
           <!-- Render Tabs, supply a unique `key` to each tab -->
           <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise.id" :title="exercise.name">
             <div class="text-center">
               <img :src="exercise.image_url" alt="" />
               {{ exercise }}
             </div>
-            <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
-            <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button>
+            <!-- <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
+            <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button> -->
           </b-tab>
 
           <!-- Render this if no tabs -->
@@ -64,9 +64,21 @@
             </div>
           </template>
         </b-tabs>
+
+        <!-- Control buttons-->
+        <div class="text-center">
+          <b-button-group class="mt-2">
+            <b-button @click="tabIndex--" v-on:click="dereaseValue()">Previous</b-button>
+            <b-button @click="tabIndex++" v-on:click="increaseValue()">Next</b-button>
+          </b-button-group>
+
+          <div class="text-muted">Exercise: {{ tabIndex }}</div>
+        </div>
       </b-card>
     </div>
     <!-- END TAB PANEL -->
+
+    <!-- BEGIN TABS WITH CONTROL BUTTONS -->
 
     <!-- <button
       type="button"
@@ -122,6 +134,7 @@ export default {
       tabs: [],
       tabCounter: 0,
       value: 0,
+      tabIndex: 1,
       // max: 5,
     };
   },
@@ -139,7 +152,9 @@ export default {
         this.value = 0;
       } else {
         this.value++;
+        this.key++;
       }
+      console.log("tab index increase: " + this.tabIndex);
     },
     dereaseValue() {
       if (this.value < 0) {
@@ -147,6 +162,7 @@ export default {
       } else {
         this.value--;
       }
+      console.log("tab index decrease: " + this.tabIndex);
     },
     // getMax() {
     //   this.max = this.workout.exercises.length;

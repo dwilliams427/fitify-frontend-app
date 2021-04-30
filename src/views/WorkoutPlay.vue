@@ -25,10 +25,22 @@
 
     <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
 
-    <!-- AUTOPLAY -->
-    <autoplay-example></autoplay-example>
-    <hr />
-    <thumbnail-example></thumbnail-example>
+    <!-- PROGRESS BAR  -->
+    <div>
+      <h2 class="text-center" v-if="workout.exercises">
+        {{ workout.name }} || {{ workout.exercises.length }} exercises
+      </h2>
+      <b-progress v-if="workout.exercises" :max="workout.exercises.length" height="2rem">
+        <b-progress-bar :value="value">
+          <span>
+            Progress:
+            <strong>{{ value }} / {{ workout.exercises.length }}</strong>
+          </span>
+        </b-progress-bar>
+      </b-progress>
+    </div>
+
+    <!-- CAROUSEL -->
 
     <!-- BEGIN TAB PANEL -->
     <div class="container">
@@ -40,6 +52,8 @@
               <img :src="exercise.image_url" alt="" />
               {{ exercise }}
             </div>
+            <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
+            <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button>
           </b-tab>
 
           <!-- Render this if no tabs -->
@@ -98,14 +112,8 @@
 
 <script>
 import axios from "axios";
-import AutoplayExample from "../components/AutoplayExample";
-import ThumbnailExample from "../components/ThumbnailsExample";
 
 export default {
-  components: {
-    AutoplayExample,
-    ThumbnailExample,
-  },
   data: function () {
     return {
       workout: {},
@@ -113,15 +121,35 @@ export default {
       exercise: {},
       tabs: [],
       tabCounter: 0,
+      value: 0,
+      // max: 5,
     };
   },
   created: function () {
     this.showWorkout();
     this.getExercises();
+    // this.getMax();
+  },
+  mounted: function () {
+    // this.getMax();
   },
   methods: {
-    // newTab() {
-    //   this.tabs.push(this.tabCounter++);
+    increaseValue() {
+      if (this.value < 0) {
+        this.value = 0;
+      } else {
+        this.value++;
+      }
+    },
+    dereaseValue() {
+      if (this.value < 0) {
+        this.value = 0;
+      } else {
+        this.value--;
+      }
+    },
+    // getMax() {
+    //   this.max = this.workout.exercises.length;
     // },
     showWorkout: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
@@ -154,5 +182,8 @@ export default {
 }
 .workout-play {
   background: white;
+}
+.text-center {
+  color: black;
 }
 </style>

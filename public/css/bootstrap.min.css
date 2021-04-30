@@ -5009,10 +5009,10 @@ a.badge-dark:focus {
   -ms-flex-pack: center;
   justify-content: center;
   overflow: hidden;
-  color: #fff;
+  color: #f34e3a;
   text-align: center;
   white-space: nowrap;
-  background-color: #007bff;
+  background-color: #f34e3a;
   transition: width 0.6s ease;
 }
 @media (prefers-reduced-motion: reduce) {

@@ -48,9 +48,18 @@
         <b-tabs card v-model="tabIndex">
           <!-- Render Tabs, supply a unique `key` to each tab -->
           <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise.id" :title="exercise.name">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <img :src="exercise.image_url" alt="" />
+                </div>
+              </div>
+            </div>
             <div class="text-center">
-              <img :src="exercise.image_url" alt="" />
-              {{ exercise }}
+              <span>
+                <h1>{{ exercise.name }}</h1>
+                <h5 class="time">{{ exercise.time }} seconds</h5>
+              </span>
             </div>
             <!-- <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
             <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button> -->
@@ -148,17 +157,16 @@ export default {
   },
   methods: {
     increaseValue() {
-      if (this.value < 0) {
-        this.value = 0;
+      if (this.value < 1) {
+        this.value = 1;
       } else {
         this.value++;
-        this.key++;
       }
       console.log("tab index increase: " + this.tabIndex);
     },
     dereaseValue() {
-      if (this.value < 0) {
-        this.value = 0;
+      if (this.value < 1) {
+        this.value = 1;
       } else {
         this.value--;
       }
@@ -201,5 +209,8 @@ export default {
 }
 .text-center {
   color: black;
+}
+.time {
+  justify-content: right;
 }
 </style>

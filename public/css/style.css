@@ -473,7 +473,7 @@ ol {
   -o-transition: all 0.6s ease 0.6s;
   transition: all 0.6s ease 0.6s;
 }
-.hero-items .owl-nav button[type=button] {
+.hero-items .owl-nav button[type="button"] {
   position: absolute;
   left: 65px;
   top: 50%;
@@ -484,7 +484,7 @@ ol {
   font-size: 50px;
   color: #ffffff;
 }
-.hero-items .owl-nav button[type=button].owl-next {
+.hero-items .owl-nav button[type="button"].owl-next {
   left: auto;
   right: 65px;
 }
@@ -700,11 +700,15 @@ ol {
 /*---------------------
   Trainer Section
 -----------------------*/
-.trainer-schedule.class-timetable .section-title h2, .class-timetable.choseus-section .section-title h2, .class-timetable.about-page-trainer .section-title h2 {
+.trainer-schedule.class-timetable .section-title h2,
+.class-timetable.choseus-section .section-title h2,
+.class-timetable.about-page-trainer .section-title h2 {
   color: #191919;
   margin-bottom: 61px;
 }
-.trainer-schedule.class-timetable .section-title .nav-controls ul li, .class-timetable.choseus-section .section-title .nav-controls ul li, .class-timetable.about-page-trainer .section-title .nav-controls ul li {
+.trainer-schedule.class-timetable .section-title .nav-controls ul li,
+.class-timetable.choseus-section .section-title .nav-controls ul li,
+.class-timetable.about-page-trainer .section-title .nav-controls ul li {
   color: #232530;
   display: inline-block;
   list-style: none;
@@ -715,21 +719,31 @@ ol {
   margin-right: 54px;
   cursor: pointer;
 }
-.trainer-schedule.class-timetable .section-title .nav-controls ul li.active, .class-timetable.choseus-section .section-title .nav-controls ul li.active, .class-timetable.about-page-trainer .section-title .nav-controls ul li.active {
+.trainer-schedule.class-timetable .section-title .nav-controls ul li.active,
+.class-timetable.choseus-section .section-title .nav-controls ul li.active,
+.class-timetable.about-page-trainer .section-title .nav-controls ul li.active {
   color: #f34e3a;
 }
-.trainer-schedule.class-timetable .section-title .nav-controls ul li:last-child, .class-timetable.choseus-section .section-title .nav-controls ul li:last-child, .class-timetable.about-page-trainer .section-title .nav-controls ul li:last-child {
+.trainer-schedule.class-timetable .section-title .nav-controls ul li:last-child,
+.class-timetable.choseus-section .section-title .nav-controls ul li:last-child,
+.class-timetable.about-page-trainer .section-title .nav-controls ul li:last-child {
   margin-right: 0;
 }
-.trainer-schedule .section-title, .choseus-section .section-title, .about-page-trainer .section-title {
+.trainer-schedule .section-title,
+.choseus-section .section-title,
+.about-page-trainer .section-title {
   text-align: center;
 }
-.trainer-schedule .section-title h2, .choseus-section .section-title h2, .about-page-trainer .section-title h2 {
+.trainer-schedule .section-title h2,
+.choseus-section .section-title h2,
+.about-page-trainer .section-title h2 {
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 46px;
 }
-.trainer-schedule .section-title h2:before, .choseus-section .section-title h2:before, .about-page-trainer .section-title h2:before {
+.trainer-schedule .section-title h2:before,
+.choseus-section .section-title h2:before,
+.about-page-trainer .section-title h2:before {
   width: 70px;
   height: 3px;
   right: 0;
@@ -737,7 +751,9 @@ ol {
   top: 49px;
   margin: 0 auto;
 }
-.trainer-schedule .section-title p, .choseus-section .section-title p, .about-page-trainer .section-title p {
+.trainer-schedule .section-title p,
+.choseus-section .section-title p,
+.about-page-trainer .section-title p {
   color: #ffffff;
 }
 
@@ -776,7 +792,7 @@ ol {
 }
 .schedule-table table tbody tr {
   border-bottom: 1px solid #e5e5e5;
-  background: #F0F0F0;
+  background: #f0f0f0;
 }
 .schedule-table table tbody tr:nth-child(even) {
   background: #ffffff;
@@ -788,13 +804,16 @@ ol {
   font-family: "Oswald", sans-serif;
   font-weight: 500;
 }
-.schedule-table table tbody tr td.gym h6, .schedule-table table tbody tr td.crossfit h6, .schedule-table table tbody tr td.running h6 {
+.schedule-table table tbody tr td.gym h6,
+.schedule-table table tbody tr td.crossfit h6,
+.schedule-table table tbody tr td.running h6 {
   color: #f34e3a;
 }
 .schedule-table table tbody tr td.yoga h6 {
   color: #247cc6;
 }
-.schedule-table table tbody tr td.body h6, .schedule-table table tbody tr td.box h6 {
+.schedule-table table tbody tr td.body h6,
+.schedule-table table tbody tr td.box h6 {
   color: #6dcff6;
 }
 .schedule-table table tbody tr td.cardio h6 {
@@ -942,12 +961,14 @@ ol {
   overflow: hidden;
   margin-bottom: 10px;
 }
-.latest-items .latest-text .latest-tag .tag-clock, .latest-items .latest-text .latest-tag .tag-comments {
+.latest-items .latest-text .latest-tag .tag-clock,
+.latest-items .latest-text .latest-tag .tag-comments {
   float: left;
   font-size: 14px;
   color: #9a9a9a;
 }
-.latest-items .latest-text .latest-tag .tag-clock i, .latest-items .latest-text .latest-tag .tag-comments i {
+.latest-items .latest-text .latest-tag .tag-clock i,
+.latest-items .latest-text .latest-tag .tag-comments i {
   margin-right: 8px;
 }
 .latest-items .latest-text .latest-tag .tag-comments {
@@ -974,6 +995,8 @@ ol {
 -----------------------*/
 .footer-section {
   overflow: hidden;
+  position: absolute;
+  bottom: 0;
 }
 
 .map-location {
@@ -1203,13 +1226,16 @@ ol {
 /*---------------------
   Chose Section
 -----------------------*/
-.choseus-section, .about-page-trainer {
+.choseus-section,
+.about-page-trainer {
   padding-bottom: 66px;
 }
-.choseus-section .section-title h2, .about-page-trainer .section-title h2 {
+.choseus-section .section-title h2,
+.about-page-trainer .section-title h2 {
   color: #ffffff;
 }
-.choseus-section .section-title h2:before, .about-page-trainer .section-title h2:before {
+.choseus-section .section-title h2:before,
+.about-page-trainer .section-title h2:before {
   background: #ffffff;
 }
 
@@ -1397,7 +1423,7 @@ ol {
 .blog-items .single-blog-item .blog-text .blog-tag {
   overflow: hidden;
   padding: 18px 0;
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .blog-items .single-blog-item .blog-text .blog-tag .post-info {
   float: left;
@@ -2166,11 +2192,11 @@ ol {
     margin: 0;
   }
 
-  .hero-items .owl-nav button[type=button] {
+  .hero-items .owl-nav button[type="button"] {
     left: 5px;
   }
 
-  .hero-items .owl-nav button[type=button].owl-next {
+  .hero-items .owl-nav button[type="button"].owl-next {
     right: 5px;
   }
 
@@ -2217,8 +2243,8 @@ ol {
   }
 
   .trainer-schedule.class-timetable .section-title .nav-controls ul li,
-.class-timetable.choseus-section .section-title .nav-controls ul li,
-.class-timetable.about-page-trainer .section-title .nav-controls ul li {
+  .class-timetable.choseus-section .section-title .nav-controls ul li,
+  .class-timetable.about-page-trainer .section-title .nav-controls ul li {
     margin-right: 25px;
     margin-bottom: 10px;
   }

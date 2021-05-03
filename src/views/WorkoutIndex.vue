@@ -44,6 +44,7 @@
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
                         <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <!-- <img :src="workout.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">
                         <h5>{{ workout.name }}</h5>
@@ -178,10 +179,10 @@ export default {
     this.indexWorkouts();
   },
   methods: {
-    new_exercise() {
+    new_workout() {
       this.$router.push("/workouts/new");
     },
-    new_workout() {
+    new_exercise() {
       this.$router.push("/exercises/new");
     },
     indexWorkouts: function () {

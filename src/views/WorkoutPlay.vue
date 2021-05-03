@@ -25,16 +25,44 @@
 
     <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
 
+    <!-- PROGRESS BAR  -->
+    <div>
+      <h2 class="text-center" v-if="workout.exercises">
+        {{ workout.name }} || {{ workout.exercises.length }} exercises
+      </h2>
+      <b-progress v-if="workout.exercises" :max="workout.exercises.length" height="2rem">
+        <b-progress-bar :value="value">
+          <span>
+            Progress:
+            <strong>{{ value }} / {{ workout.exercises.length }}</strong>
+          </span>
+        </b-progress-bar>
+      </b-progress>
+    </div>
+
+    <!-- CAROUSEL -->
+
     <!-- BEGIN TAB PANEL -->
     <div class="container">
       <b-card no-body>
-        <b-tabs card>
+        <b-tabs card v-model="tabIndex">
           <!-- Render Tabs, supply a unique `key` to each tab -->
           <b-tab v-for="exercise in workout.exercises" :key="'dyn-tab-' + exercise.id" :title="exercise.name">
-            <div class="text-center">
-              <img :src="exercise.image_url" alt="" />
-              {{ exercise }}
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <img :src="exercise.image_url" alt="" />
+                </div>
+              </div>
             </div>
+            <div class="text-center">
+              <span>
+                <h1>{{ exercise.name }}</h1>
+                <h5 class="time">{{ exercise.time }} seconds</h5>
+              </span>
+            </div>
+            <!-- <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
+            <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button> -->
           </b-tab>
 
           <!-- Render this if no tabs -->
@@ -45,9 +73,21 @@
             </div>
           </template>
         </b-tabs>
+
+        <!-- Control buttons-->
+        <div class="text-center">
+          <b-button-group class="mt-2">
+            <b-button @click="tabIndex--" v-on:click="dereaseValue()">Previous</b-button>
+            <b-button @click="tabIndex++" v-on:click="increaseValue()">Next</b-button>
+          </b-button-group>
+
+          <div class="text-muted">Exercise: {{ tabIndex }}</div>
+        </div>
       </b-card>
     </div>
     <!-- END TAB PANEL -->
+
+    <!-- BEGIN TABS WITH CONTROL BUTTONS -->
 
     <!-- <button
       type="button"
@@ -102,15 +142,38 @@ export default {
       exercise: {},
       tabs: [],
       tabCounter: 0,
+      value: 0,
+      tabIndex: 1,
+      // max: 5,
     };
   },
   created: function () {
     this.showWorkout();
     this.getExercises();
+    // this.getMax();
+  },
+  mounted: function () {
+    // this.getMax();
   },
   methods: {
-    // newTab() {
-    //   this.tabs.push(this.tabCounter++);
+    increaseValue() {
+      if (this.value < 1) {
+        this.value = 1;
+      } else {
+        this.value++;
+      }
+      console.log("tab index increase: " + this.tabIndex);
+    },
+    dereaseValue() {
+      if (this.value < 1) {
+        this.value = 1;
+      } else {
+        this.value--;
+      }
+      console.log("tab index decrease: " + this.tabIndex);
+    },
+    // getMax() {
+    //   this.max = this.workout.exercises.length;
     // },
     showWorkout: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
@@ -143,5 +206,11 @@ export default {
 }
 .workout-play {
   background: white;
+}
+.text-center {
+  color: black;
+}
+.time {
+  justify-content: right;
 }
 </style>

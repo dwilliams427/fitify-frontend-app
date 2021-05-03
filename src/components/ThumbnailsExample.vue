@@ -1,35 +1,29 @@
 <template>
   <div class="wrapper">
-    <h2>Autoplay</h2>
+    <h2>Thumbnail Slider</h2>
 
     <div class="description">
-      <!-- <a
-        href="https://github.com/Splidejs/vue-splide/blob/master/examples/src/js/examples/components/AutoplayExample.vue"
+      <a
+        href="https://github.com/Splidejs/vue-splide/blob/master/examples/src/js/examples/components/ThumbnailsExample.vue"
         target="_blank"
         rel="noopener"
       >
         View Code
-      </a> -->
+      </a>
     </div>
 
-    <splide :options="options" has-slider-wrapper>
-      <splide-slide v-for="exercise in workout.exercises" :key="exercise.name">
-        <img :src="exercise.image_url" alt="slide.alt" />
-
-        <!-- <splide-slide v-for="exercise in workout.exercises" :key="exercise.src">
-        <img :src="exercise.image_url" alt="alt" :interval="exercise.time" /> -->
+    <splide :options="primaryOptions" ref="primary">
+      <splide-slide v-for="slide in slides" :key="slide.src">
+        <img :src="slide.src" alt="slide.alt" />
       </splide-slide>
+    </splide>
 
-      <template v-slot:controls>
-        <div class="splide__progress">
-          <div class="splide__progress__bar"></div>
-        </div>
-
-        <div class="splide__autoplay">
-          <button class="splide__play">Play</button>
-          <button class="splide__pause">Pause</button>
-        </div>
-      </template>
+    <splide :options="secondaryOptions" ref="secondary">
+      <splide-slide v-for="slide in slides" :key="slide.src">
+        <img :src="slide.src" alt="slide.alt" />
+        <!-- <splide-slide v-for="exercise in workout.exercises" :key="exercise.name">
+        <img :src="exercise.image_url" alt="slide.alt" /> -->
+      </splide-slide>
     </splide>
   </div>
 </template>
@@ -64,8 +58,32 @@ export default {
         focus: "center",
         interval: 3000,
       },
+      primaryOptions: {
+        type: "loop",
+        perPage: 2,
+        perMove: 1,
+        gap: "1rem",
+        pagination: false,
+      },
+      secondaryOptions: {
+        type: "slide",
+        rewind: true,
+        gap: "1rem",
+        pagination: false,
+        fixedWidth: 110,
+        fixedHeight: 70,
+        cover: true,
+        focus: "center",
+        isNavigation: true,
+        updateOnMove: true,
+      },
       slides: createSlides(),
+      count: 0,
     };
+  },
+  mounted() {
+    // Set the sync target.
+    this.$refs.primary.sync(this.$refs.secondary.splide);
   },
   methods: {
     showWorkout: function () {
@@ -87,30 +105,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-$color: #20b2aa;
-
-.splide {
-  &__autoplay {
-    margin-top: 1em;
-    text-align: center;
-  }
-
-  &__play,
-  &__pause {
-    border: none;
-    background: $color;
-    color: white;
-    transition: background-color 0.2s linear;
-    cursor: pointer;
-    padding: 0.3em 1em;
-    border-radius: 2em;
-    outline: none;
-
-    &:hover {
-      background: darken($color, 20%);
-    }
-  }
-}
-</style>

@@ -42,6 +42,7 @@
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
                         <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <!-- <img :src="exercise.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>

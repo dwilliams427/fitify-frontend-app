@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-import VueSplide from '@splidejs/vue-splide';
+import VueSplide from "@splidejs/vue-splide";
 import router from "./router";
 import axios from "axios";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -22,8 +22,9 @@ Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
-//carousel
-Vue.use( VueSplide );
+// splide carousel
+Vue.use(VueSplide);
+
 
 new Vue({
   router,

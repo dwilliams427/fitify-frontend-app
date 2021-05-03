@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/home" class="sb-item">Exercises</a>
                   <span class="sb-item">{{ exercise.name }} Edit</span>

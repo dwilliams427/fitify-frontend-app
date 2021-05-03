@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/workouts" class="sb-item">Workouts</a>
                   <span class="sb-item">{{ workout.name }}</span>

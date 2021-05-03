@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/workouts" class="sb-item">Workouts</a>
                   <span class="sb-item">{{ workout.name }} Workout</span>
@@ -27,7 +27,7 @@
             <div class="col-lg-12">
               <div class="col-lg-12">
                 <div class="section-title">
-                  <h2>{{ workout.name }}</h2>
+                  <h2>{{ workout.name }} Workout</h2>
                   <span>
                     <!-- <h5>{{ workout.exercises.length }} exercises</h5> -->
                   </span>
@@ -67,7 +67,7 @@
                   <div class="single-trainer-item">
                     <router-link v-bind:to="`/exercises/${exercise.id}/edit`">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-6.jpg" alt="" />
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
@@ -378,5 +378,8 @@ export default {
 }
 .text-center {
   margin: 10px;
+}
+.col-lg-12 {
+  margin: 12px;
 }
 </style>

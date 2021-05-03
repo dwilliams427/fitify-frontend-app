@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/home" class="sb-item">Home</a>
                   <span class="sb-item">Exercises</span>
@@ -47,7 +47,7 @@
                   <router-link v-bind:to="`exercises/${exercise.id}/edit`">
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-6.jpg" alt="" />
                         <!-- <img :src="exercise.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">

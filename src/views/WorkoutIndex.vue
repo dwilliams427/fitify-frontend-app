@@ -252,4 +252,7 @@ export default {
 .breadcrumb-section set-bg {
   background-image: url("/img/breadcrumb_background.png");
 }
+.col-lg-10 {
+  margin: 10px;
+}
 </style>

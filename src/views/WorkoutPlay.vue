@@ -21,15 +21,10 @@
     </div>
     <!-- Site Breadcrumb End -->
 
-    <!-- ORIGINAL VUE -->
-
-    <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
-
     <!-- PROGRESS BAR  -->
     <div>
-      <h2 class="text-center" v-if="workout.exercises">
-        {{ workout.name }} || {{ workout.exercises.length }} exercises
-      </h2>
+      <h2 class="text-center" v-if="workout.exercises">{{ workout.name }}</h2>
+      <h5 class="text-center" v-if="workout.exercises">{{ workout.exercises.length }} exercises</h5>
       <b-progress v-if="workout.exercises" :max="workout.exercises.length" height="2rem">
         <b-progress-bar :value="value">
           <span>
@@ -39,8 +34,6 @@
         </b-progress-bar>
       </b-progress>
     </div>
-
-    <!-- CAROUSEL -->
 
     <!-- BEGIN TAB PANEL -->
     <div class="container">

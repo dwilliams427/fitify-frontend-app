@@ -30,8 +30,14 @@
             <div class="col-lg-12">
               <div class="col-lg-12">
                 <div class="section-title">
-                  <h2>Workouts</h2>
+                  <h2>All Workouts</h2>
                   <p>Edit your workouts or create a new one</p>
+                  <div v-if="!isLoggedIn()">
+                    <a href="/login">
+                      LOG IN
+                      <i class="ti-angle-double-right"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -184,6 +190,9 @@ export default {
     },
     new_exercise() {
       this.$router.push("/exercises/new");
+    },
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
     },
     indexWorkouts: function () {
       axios.get("/api/workouts").then((response) => {

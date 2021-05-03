@@ -995,7 +995,7 @@ ol {
 -----------------------*/
 .footer-section {
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 

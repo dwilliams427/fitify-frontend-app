@@ -49,7 +49,7 @@
                   <router-link v-bind:to="`workouts/${workout.id}`">
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-2.jpg" alt="" />
                         <!-- <img :src="workout.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">

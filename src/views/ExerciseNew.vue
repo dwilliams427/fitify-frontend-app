@@ -51,7 +51,9 @@
                 <br />
               </div>
               <input type="submit" class="primary-btn" value="Create" />
+              <br />
             </form>
+            <br />
           </div>
         </div>
       </div>

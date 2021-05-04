@@ -61,6 +61,7 @@
           <button type="submit" class="schedule-btn" value="Update" v-on:click="destroyExercise(exercise)">
             Delete
           </button>
+          <br />
         </div>
       </form>
     </div>

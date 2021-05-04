@@ -44,7 +44,9 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="text-center">
-                  <img :src="exercise.image_url" alt="" />
+                  <div class="about-pic">
+                    <img :src="exercise.image_url" alt="" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -137,16 +139,11 @@ export default {
       tabCounter: 0,
       value: 0,
       tabIndex: 1,
-      // max: 5,
     };
   },
   created: function () {
     this.showWorkout();
     this.getExercises();
-    // this.getMax();
-  },
-  mounted: function () {
-    // this.getMax();
   },
   methods: {
     increaseValue() {
@@ -202,8 +199,15 @@ export default {
 }
 .text-center {
   color: black;
+  align-content: center;
+  justify-content: center;
 }
 .time {
   justify-content: right;
+}
+.exercise-image {
+  max-height: 400px;
+  max-width: 600px;
+  align-content: center;
 }
 </style>

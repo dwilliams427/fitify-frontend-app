@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/workouts" class="sb-item">Workouts</a>
                   <span class="sb-item">{{ workout.name }} Workout</span>
@@ -27,7 +27,7 @@
             <div class="col-lg-12">
               <div class="col-lg-12">
                 <div class="section-title">
-                  <h2>{{ workout.name }}</h2>
+                  <h2>{{ workout.name }} Workout</h2>
                   <span>
                     <!-- <h5>{{ workout.exercises.length }} exercises</h5> -->
                   </span>
@@ -47,12 +47,11 @@
                       <a href="">More Info</a>
                     </router-link>
                   </div> -->
-                    <router-link v-bind:to="`/workouts/${workout.id}/edit`">
-                      <button class="blog-btn">
-                        Edit Workout
-                        <i class="fa fa-angle-double-right"></i>
-                      </button>
-                    </router-link>
+                    <!-- EDIT WORKOUT BUTTON -->
+                    <button class="blog-btn" data-toggle="modal" data-target="#workoutModal" v-on:click="getWorkout()">
+                      Edit Workout
+                      <i class="fa fa-angle-double-right"></i>
+                    </button>
                   </span>
                 </div>
                 <!-- PLAY BUTTON -->
@@ -68,14 +67,11 @@
                   <div class="single-trainer-item">
                     <router-link v-bind:to="`/exercises/${exercise.id}/edit`">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-6.jpg" alt="" />
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
-                        <span>
-                          <i class="material-icons">timer</i>
-                          | {{ exercise.time }} seconds
-                        </span>
+                        <span>{{ exercise.time }} seconds</span>
                         <span>{{ exercise.reps }} reps</span>
                         <span>{{ exercise.sets }} sets</span>
                         <!-- <div class="trainer-social">
@@ -121,7 +117,7 @@
       <div class="text-center">
         <button
           type="button"
-          class="btn btn-primary"
+          class="blog-btn"
           data-toggle="modal"
           data-target="#exampleModal"
           v-on:click="getExercises()"
@@ -178,19 +174,6 @@
       <router-link v-bind:to="`/workouts/${workout.id}/edit`">Edit Workout</router-link>
       | -->
       <!-- <router-link v-bind:to="`/exercises`">Add Exercise</router-link> -->
-
-      <!-- Button trigger modal -->
-      <div class="text-center">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#workoutModal"
-          v-on:click="getWorkout()"
-        >
-          Edit Workout
-        </button>
-      </div>
 
       <!--  edit workout Modal -->
       <div
@@ -275,25 +258,48 @@
       </div>
     </div> -->
     <!-- ORIGINAL VUE -->
+
+    <!-- FAB -->
+    <fab :position="position" :bg-color="bgColor" :actions="fabActions" @new_exercise="new_exercise"></fab>
+    <!-- FAB -->
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import fab from "vue-fab";
 
 export default {
+  components: {
+    fab,
+  },
   data: function () {
     return {
       workout: {},
       exercises: [],
       exercise: {},
       errors: [],
+      bgColor: "#f34e3a",
+      position: "bottom-right",
+      fabActions: [
+        {
+          name: "new_exercise",
+          icon: "fitness_center",
+          tooltip: "New Exercise",
+        },
+      ],
     };
   },
   created: function () {
     this.showWorkouts();
   },
   methods: {
+    new_exercise() {
+      this.$router.push("/exercises/new");
+    },
+    new_workout() {
+      this.$router.push("/workouts/new");
+    },
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         // console.log("showing workout", response);
@@ -372,5 +378,8 @@ export default {
 }
 .text-center {
   margin: 10px;
+}
+.col-lg-12 {
+  margin: 12px;
 }
 </style>

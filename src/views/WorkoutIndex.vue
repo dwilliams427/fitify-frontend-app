@@ -30,8 +30,14 @@
             <div class="col-lg-12">
               <div class="col-lg-12">
                 <div class="section-title">
-                  <h2>Workouts</h2>
+                  <h2>All Workouts</h2>
                   <p>Edit your workouts or create a new one</p>
+                  <div v-if="!isLoggedIn()">
+                    <a href="/login">
+                      LOG IN
+                      <i class="ti-angle-double-right"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -43,7 +49,7 @@
                   <router-link v-bind:to="`workouts/${workout.id}`">
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-2.jpg" alt="" />
                         <!-- <img :src="workout.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">
@@ -185,6 +191,9 @@ export default {
     new_exercise() {
       this.$router.push("/exercises/new");
     },
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
     indexWorkouts: function () {
       axios.get("/api/workouts").then((response) => {
         console.log("workouts index", response);
@@ -242,5 +251,8 @@ export default {
 }
 .breadcrumb-section set-bg {
   background-image: url("/img/breadcrumb_background.png");
+}
+.col-lg-10 {
+  margin: 10px;
 }
 </style>

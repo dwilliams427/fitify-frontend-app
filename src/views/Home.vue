@@ -1,6 +1,8 @@
 <template>
   <div class="Home">
     <!-- About Us Secion Begin -->
+    <br />
+    <br />
     <section class="about-us-section spad">
       <div class="container">
         <div class="row">
@@ -25,6 +27,18 @@
                 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                 deserunt mollit anim id est laborum.
               </p>
+              <router-link to="/workouts">
+                <button type="button" class="primary-btn">
+                  Workouts
+                  <i class="ti-angle-double-right"></i>
+                </button>
+              </router-link>
+              <router-link to="/exercises">
+                <button type="button" class="primary-btn">
+                  Exercises
+                  <i class="ti-angle-double-right"></i>
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -32,14 +46,14 @@
     </section>
     <!-- About Us Secion End -->
 
-    <!-- Why Chose Us Section Begin -->
+    <!-- Why Choose Us Section Begin -->
     <div>
       <section class="choseus-section spad">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
               <div class="section-title">
-                <h2>Why Choose Us</h2>
+                <h2>Why Choose Fitify</h2>
                 <p>Our custom workout builder can help you discover new training techniques.</p>
               </div>
             </div>
@@ -57,21 +71,21 @@
                 <div class="ci-item">
                   <i class="ti-package"></i>
                   <h5>How do I play my workout?</h5>
-                  <p>Event Calendar and Event Calendar Pro full support out of the box.</p>
+                  <p>Press the PLAY button when yo're ready to workout.</p>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
                 <div class="ci-item">
                   <i class="ti-shopping-cart"></i>
-                  <h5>What do you mean by item?</h5>
-                  <p>Event Calendar and Event Calendar Pro full support out of the box.</p>
+                  <h5>What do you mean by exercise?</h5>
+                  <p>A single exercise such as a push-up or squat.</p>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
                 <div class="ci-item">
                   <i class="ti-user"></i>
                   <h5>Top notch customer support</h5>
-                  <p>Event Calendar and Event Calendar Pro full support out of the box.</p>
+                  <p>It's the best.</p>
                 </div>
               </div>
             </div>
@@ -84,7 +98,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+// import axios from "axios";
 
 export default {};
 </script>

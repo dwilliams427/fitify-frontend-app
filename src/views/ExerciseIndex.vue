@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/home" class="sb-item">Home</a>
                   <span class="sb-item">Exercises</span>
@@ -28,8 +28,14 @@
             <div class="col-lg-12">
               <div class="col-lg-12">
                 <div class="section-title">
-                  <h2>Exercises</h2>
+                  <h2>All Exercises</h2>
                   <p>Edit your exercises or create a new one</p>
+                  <div v-if="!isLoggedIn()">
+                    <a href="/login">
+                      LOG IN
+                      <i class="ti-angle-double-right"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -41,7 +47,7 @@
                   <router-link v-bind:to="`exercises/${exercise.id}/edit`">
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
-                        <img src="img/trainer/trainer-1.jpg" alt="" />
+                        <img src="img/gallery/gallery-6.jpg" alt="" />
                         <!-- <img :src="exercise.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">
@@ -102,12 +108,12 @@ export default {
       position: "bottom-right",
       fabActions: [
         {
-          name: "new_workout",
+          name: "new_exercise",
           icon: "fitness_center",
           tooltip: "New Exercise",
         },
         {
-          name: "new_exercise",
+          name: "new_workout",
           icon: "view_list",
           tooltip: "New Workout",
         },
@@ -118,11 +124,14 @@ export default {
     this.indexExercises();
   },
   methods: {
-    new_exercise() {
+    new_workout() {
       this.$router.push("/workouts/new");
     },
-    new_workout() {
+    new_exercise() {
       this.$router.push("/exercises/new");
+    },
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
     },
     indexExercises: function () {
       axios.get("/api/exercises").then((response) => {

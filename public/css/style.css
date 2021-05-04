@@ -995,7 +995,7 @@ ol {
 -----------------------*/
 .footer-section {
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
@@ -1200,6 +1200,8 @@ ol {
 }
 .about-us-section .about-pic img {
   min-width: 100%;
+  max-width: 60%;
+  max-height: 40%;
 }
 
 .about-text {

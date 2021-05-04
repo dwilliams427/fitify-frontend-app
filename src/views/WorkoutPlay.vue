@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="site-text">
-                <h2>About Us</h2>
+                <br />
                 <div class="site-breadcrumb">
                   <a href="/workouts" class="sb-item">Workouts</a>
                   <span class="sb-item">{{ workout.name }}</span>
@@ -21,15 +21,10 @@
     </div>
     <!-- Site Breadcrumb End -->
 
-    <!-- ORIGINAL VUE -->
-
-    <div v-if="workout.exercises">{{ workout.exercises.length }} exercises</div>
-
     <!-- PROGRESS BAR  -->
     <div>
-      <h2 class="text-center" v-if="workout.exercises">
-        {{ workout.name }} || {{ workout.exercises.length }} exercises
-      </h2>
+      <h2 class="text-center" v-if="workout.exercises">{{ workout.name }} Workout</h2>
+      <h5 class="text-center" v-if="workout.exercises">{{ workout.exercises.length }} exercises</h5>
       <b-progress v-if="workout.exercises" :max="workout.exercises.length" height="2rem">
         <b-progress-bar :value="value">
           <span>
@@ -40,8 +35,6 @@
       </b-progress>
     </div>
 
-    <!-- CAROUSEL -->
-
     <!-- BEGIN TAB PANEL -->
     <div class="container">
       <b-card no-body>
@@ -51,7 +44,9 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="text-center">
-                  <img :src="exercise.image_url" alt="" />
+                  <div class="about-pic">
+                    <img :src="exercise.image_url" alt="" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,16 +139,11 @@ export default {
       tabCounter: 0,
       value: 0,
       tabIndex: 1,
-      // max: 5,
     };
   },
   created: function () {
     this.showWorkout();
     this.getExercises();
-    // this.getMax();
-  },
-  mounted: function () {
-    // this.getMax();
   },
   methods: {
     increaseValue() {
@@ -209,8 +199,15 @@ export default {
 }
 .text-center {
   color: black;
+  align-content: center;
+  justify-content: center;
 }
 .time {
   justify-content: right;
+}
+.exercise-image {
+  max-height: 400px;
+  max-width: 600px;
+  align-content: center;
 }
 </style>

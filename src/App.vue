@@ -5,7 +5,7 @@
       <header class="header-section">
         <div class="container">
           <div class="logo">
-            <a href="./index.html">
+            <a href="/workouts">
               <h2>FITIFY</h2>
             </a>
           </div>
@@ -15,14 +15,14 @@
                 <li><a href="/home">Home</a></li>
                 <li><a href="/workouts">Workouts</a></li>
                 <li><a href="/exercises">Exercises</a></li>
-                <li>
-                  <span v-if="!isLoggedIn()">
+                <li v-if="!isLoggedIn()">
+                  <span>
                     <!-- <router-link to="/signup" class="nav-item nav-link">Sign Up</router-link> -->
                     <a href="/signup">Sign Up</a>
                   </span>
                 </li>
-                <li>
-                  <span v-if="!isLoggedIn()">
+                <li v-if="!isLoggedIn()">
+                  <span>
                     <!-- <router-link to="/login" class="nav-item nav-link">Login</router-link> -->
                     <a href="/login">Login</a>
                   </span>

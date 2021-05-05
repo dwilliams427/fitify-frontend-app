@@ -43,11 +43,11 @@
           <div class="card-deck">
             <div v-for="exercise in exercises" v-bind:key="exercise.id">
               <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                   <router-link v-bind:to="`exercises/${exercise.id}/edit`">
                     <div class="single-trainer-item">
                       <div class="trainer-pic">
-                        <img src="img/gallery/gallery-6.jpg" alt="" />
+                        <img class="card-image" :src="exercise.image_url" alt="" />
                         <!-- <img :src="exercise.image_url" alt="" /> -->
                       </div>
                       <div class="trainer-text">
@@ -139,33 +139,6 @@ export default {
         this.exercises = response.data;
       });
     },
-    // exerciseInfo: function (exercise) {
-    //   this.currentExercise = exercise;
-    //   document.querySelector("#exercise-details").showModal();
-    // },
-    // updateExercise: function (exercise) {
-    //   var params = {
-    //     name: exercise.name,
-    //     reps: exercise.reps,
-    //     sets: exercise.sets,
-    //   };
-    //   axios
-    //     .patch("/api/exercises/" + exercise.id, params)
-    //     .then((response) => {
-    //       console.log("exercise updated", response);
-    //       console.log("exercise id: " + exercise.id);
-    //       this.currentExercise = {};
-    //     })
-    //     .catch((error) => {
-    //       console.log("exercises update error", error.response);
-    //     });
-    // },
-    // destroyExercise: function (exercise) {
-    //   axios.delete("/api/exercises/" + exercise.id).then(() => {
-    //     console.log("You did it! Or whatever!");
-    //     this.$router.push("/exercises");
-    //   });
-    // },
   },
 };
 </script>

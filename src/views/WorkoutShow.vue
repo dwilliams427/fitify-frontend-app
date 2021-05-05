@@ -82,7 +82,7 @@
                       </div>
                       <!-- DESTROY BUTTON -->
                     </router-link>
-                    <div>
+                    <div class="delete-button">
                       <button type="button" class="primary-btn" value="Update" v-on:click="destroyExercise(exercise)">
                         DELETE
                       </button>
@@ -205,6 +205,7 @@
                 Name:
                 <input type="text" v-model="workout.name" />
                 <input type="submit" class="btn btn-primary" value="Update" />
+                <button class="btn btn-danger" v-on:click="destroyWorkout(workout)">Delete</button>
               </div>
             </form>
             <div class="modal-footer">
@@ -278,6 +279,7 @@ export default {
       workout: {},
       exercises: [],
       exercise: {},
+      max_time: 0,
       errors: [],
       bgColor: "#f34e3a",
       position: "bottom-right",
@@ -296,9 +298,6 @@ export default {
   methods: {
     new_exercise() {
       this.$router.push("/exercises/new");
-    },
-    new_workout() {
-      this.$router.push("/workouts/new");
     },
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
@@ -355,6 +354,7 @@ export default {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         console.log("showing workout", response);
         this.workout = response.data;
+        this.$router.push("/workouts");
       });
     },
   },
@@ -381,5 +381,14 @@ export default {
 }
 .col-lg-12 {
   margin: 12px;
+}
+.delete-button {
+  padding: 12px;
+}
+.blog-btn {
+  margin: 10px;
+}
+.primary-btn {
+  margin: 10px;
 }
 </style>

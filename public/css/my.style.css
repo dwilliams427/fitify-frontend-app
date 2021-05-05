@@ -1,0 +1,17 @@
+.exercise-image {
+  max-height: 400px;
+  max-width: 600px;
+  align-content: center;
+}
+.card-image {
+  max-height: 345px;
+  max-width: 208px;
+  align-content: center;
+}
+.col-lg-12 {
+  margin: 10px;
+  padding: 10px;
+}
+.single-trainer-item {
+  margin: 10px;
+}

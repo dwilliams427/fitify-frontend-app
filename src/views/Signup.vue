@@ -21,7 +21,7 @@
     <!-- Site Breadcrumb End -->
 
     <div class="container">
-      <form v-on:submit="submit()">
+      <form v-on:submit.prevent="submit()">
         <h1>Fitify</h1>
         <ul>
           <li class="text-danger" v-for="error in errors" v-bind:key="error">

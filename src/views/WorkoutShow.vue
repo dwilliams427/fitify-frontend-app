@@ -354,7 +354,6 @@ export default {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         console.log("showing workout", response);
         this.workout = response.data;
-        this.$router.push("/workouts");
       });
     },
   },

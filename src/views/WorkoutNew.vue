@@ -27,7 +27,7 @@
             {{ error }}
           </li>
         </ul>
-        <div class="form-group">
+        <div class="form-group col-md-4">
           <label>Name:</label>
           <input type="text" class="form-control" v-model="name" />
           <small class="text-danger" v-if="name.length >= 0 && name.length < 5">

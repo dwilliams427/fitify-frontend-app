@@ -64,6 +64,7 @@
             <div class="text-center text-muted">
               There are no exercises
               <br />
+              <a href="/exercises">Add An Exercise</a>
             </div>
           </template>
         </b-tabs>

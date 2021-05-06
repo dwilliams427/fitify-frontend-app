@@ -42,19 +42,18 @@
                       </button>
                     </router-link>
                     <!-- END PLAY BUTTON -->
-                    <!-- <div class="trainer-social">
-                    <router-link v-bind:to="`workouts/${workout.id}/edit`">
-                      <a href="">More Info</a>
-                    </router-link>
-                  </div> -->
+
                     <!-- EDIT WORKOUT BUTTON -->
                     <button class="blog-btn" data-toggle="modal" data-target="#workoutModal" v-on:click="getWorkout()">
                       Edit Workout
                       <i class="fa fa-angle-double-right"></i>
                     </button>
+                    <button class="blog-btn" v-on:click="destroyWorkout(workout)">
+                      DELETE
+                      <i class="fa fa-angle-double-right"></i>
+                    </button>
                   </span>
                 </div>
-                <!-- PLAY BUTTON -->
               </div>
             </div>
           </div>
@@ -205,7 +204,7 @@
                 Name:
                 <input type="text" v-model="workout.name" />
                 <input type="submit" class="primary-btn" value="Update" />
-                <button type="submit" class="blog-btn" v-on:click="destroyWorkout(workout)">Delete</button>
+                <!-- <button type="submit" class="blog-btn" v-on:click="destroyWorkout(workout)">Delete</button> -->
               </div>
             </form>
             <div class="modal-footer">

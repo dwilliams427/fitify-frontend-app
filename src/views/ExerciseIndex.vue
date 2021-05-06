@@ -31,6 +31,11 @@
                   <h2>All Exercises</h2>
                   <p>Edit your exercises or create a new one</p>
                   <div v-if="!isLoggedIn()">
+                    <a href="/signup">
+                      SIGN UP
+                      <i class="ti-angle-double-right"></i>
+                    </a>
+                    <p>or</p>
                     <a href="/login">
                       LOG IN
                       <i class="ti-angle-double-right"></i>

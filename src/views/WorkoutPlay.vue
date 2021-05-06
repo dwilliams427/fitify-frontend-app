@@ -162,6 +162,8 @@ export default {
     increaseValue() {
       if (this.value < 1) {
         this.value = 1;
+      } else if (this.value == this.tabIndex) {
+        this.start();
       } else {
         this.value++;
       }
@@ -174,6 +176,26 @@ export default {
         this.value--;
       }
       console.log("tab index decrease: " + this.tabIndex);
+    },
+    start() {
+      this.$confetti
+        .start
+        //       // DABABY VERSION
+        //   {
+        //   particles: [
+        //     {
+        //       type: "image",
+        //       // url: "https://media.pitchfork.com/photos/5c7d4c1b4101df3df85c41e5/2:1/w_1000/Dababy_BabyOnBaby.jpg",
+        //     },
+        //   ],
+        // }
+        ();
+      setTimeout(() => {
+        this.stop();
+      }, 4000);
+    },
+    stop() {
+      this.$confetti.stop();
     },
     // getMax() {
     //   this.max = this.workout.exercises.length;

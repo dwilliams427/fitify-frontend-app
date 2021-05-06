@@ -45,7 +45,7 @@
               <div class="col-lg-12">
                 <div class="text-center">
                   <div class="about-pic">
-                    <img :src="exercise.image_url" alt="" />
+                    <img class="exercise-image" :src="exercise.image_url" alt="" />
                   </div>
                 </div>
               </div>
@@ -54,10 +54,9 @@
               <span>
                 <h1>{{ exercise.name }}</h1>
                 <h5 class="time">{{ exercise.time }} seconds</h5>
+                <h5 class="time">{{ exercise.sets }} sets</h5>
               </span>
             </div>
-            <!-- <b-button pill variant="outline-secondary" v-on:click="dereaseValue()">Prev</b-button>
-            <b-button pill variant="outline-secondary" v-on:click="increaseValue()">Next</b-button> -->
           </b-tab>
 
           <!-- Render this if no tabs -->
@@ -65,6 +64,7 @@
             <div class="text-center text-muted">
               There are no exercises
               <br />
+              <a href="/exercises">Add An Exercise</a>
             </div>
           </template>
         </b-tabs>
@@ -204,10 +204,5 @@ export default {
 }
 .time {
   justify-content: right;
-}
-.exercise-image {
-  max-height: 400px;
-  max-width: 600px;
-  align-content: center;
 }
 </style>

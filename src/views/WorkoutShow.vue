@@ -42,19 +42,18 @@
                       </button>
                     </router-link>
                     <!-- END PLAY BUTTON -->
-                    <!-- <div class="trainer-social">
-                    <router-link v-bind:to="`workouts/${workout.id}/edit`">
-                      <a href="">More Info</a>
-                    </router-link>
-                  </div> -->
+
                     <!-- EDIT WORKOUT BUTTON -->
                     <button class="blog-btn" data-toggle="modal" data-target="#workoutModal" v-on:click="getWorkout()">
                       Edit Workout
                       <i class="fa fa-angle-double-right"></i>
                     </button>
+                    <button class="blog-btn" v-on:click="destroyWorkout(workout)">
+                      DELETE
+                      <i class="fa fa-angle-double-right"></i>
+                    </button>
                   </span>
                 </div>
-                <!-- PLAY BUTTON -->
               </div>
             </div>
           </div>
@@ -67,7 +66,7 @@
                   <div class="single-trainer-item">
                     <router-link v-bind:to="`/exercises/${exercise.id}/edit`">
                       <div class="trainer-pic">
-                        <img src="img/gallery/gallery-6.jpg" alt="" />
+                        <img class="card-image" :src="exercise.image_url" alt="" />
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
@@ -82,7 +81,7 @@
                       </div>
                       <!-- DESTROY BUTTON -->
                     </router-link>
-                    <div>
+                    <div class="delete-button">
                       <button type="button" class="primary-btn" value="Update" v-on:click="destroyExercise(exercise)">
                         DELETE
                       </button>
@@ -151,7 +150,7 @@
               </div>
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+              <button type="button" class="blog-btn" data-dismiss="modal">Done</button>
             </div>
           </div>
         </div>
@@ -204,11 +203,12 @@
               <div>
                 Name:
                 <input type="text" v-model="workout.name" />
-                <input type="submit" class="btn btn-primary" value="Update" />
+                <input type="submit" class="primary-btn" value="Update" />
+                <!-- <button type="submit" class="blog-btn" v-on:click="destroyWorkout(workout)">Delete</button> -->
               </div>
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+              <button type="button" class="blog-btn" data-dismiss="modal">Done</button>
             </div>
           </div>
         </div>
@@ -278,6 +278,7 @@ export default {
       workout: {},
       exercises: [],
       exercise: {},
+      max_time: 0,
       errors: [],
       bgColor: "#f34e3a",
       position: "bottom-right",
@@ -296,9 +297,6 @@ export default {
   methods: {
     new_exercise() {
       this.$router.push("/exercises/new");
-    },
-    new_workout() {
-      this.$router.push("/workouts/new");
     },
     showWorkouts: function () {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
@@ -357,6 +355,12 @@ export default {
         this.workout = response.data;
       });
     },
+    destroyWorkout: function (workout) {
+      axios.delete("/api/workouts/" + workout.id).then((response) => {
+        this.$router.push("/workouts");
+        console.log("workouts destroy", response);
+      });
+    },
   },
 };
 </script>
@@ -381,5 +385,14 @@ export default {
 }
 .col-lg-12 {
   margin: 12px;
+}
+.delete-button {
+  padding: 12px;
+}
+.blog-btn {
+  margin: 10px;
+}
+.primary-btn {
+  margin: 10px;
 }
 </style>

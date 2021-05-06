@@ -1,0 +1,26 @@
+.exercise-image {
+  max-height: 320px;
+  max-width: 600px;
+  align-content: center;
+}
+.card-image {
+  max-height: 345px;
+  max-width: 208px;
+  align-content: center;
+}
+.col-lg-12 {
+  margin: 10px;
+  padding: 10px;
+}
+.single-trainer-item {
+  margin: 10px;
+}
+
+/* LUNGES GIF
+https://seven.app/media/images/Lunges.gif
+
+CALF RAISES
+https://thumbs.gfycat.com/HarmfulIndelibleHarpyeagle-max-1mb.gif
+
+SQUATS
+https://177d01fbswx3jjl1t20gdr8j-wpengine.netdna-ssl.com/wp-content/uploads/2019/05/DB-Goblet-Squat-opt.gif */

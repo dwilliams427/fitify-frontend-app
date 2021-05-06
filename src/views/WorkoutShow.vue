@@ -205,7 +205,7 @@
                 Name:
                 <input type="text" v-model="workout.name" />
                 <input type="submit" class="btn btn-primary" value="Update" />
-                <button class="btn btn-danger" v-on:click="destroyWorkout(workout)">Delete</button>
+                <!-- <button class="btn btn-danger" v-on:click="destroyWorkout(workout)">Delete</button> -->
               </div>
             </form>
             <div class="modal-footer">

@@ -27,15 +27,15 @@
             {{ error }}
           </li>
         </ul>
-        <div class="form-group">
+        <div class="form-group col-md-3">
           <label>Email:</label>
           <input type="email" class="form-control" v-model="email" />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-3">
           <label>Password:</label>
           <input type="password" class="form-control" v-model="password" />
         </div>
-        <input type="submit" class="btn btn-primary" value="Submit" />
+        <input type="submit" class="primary-btn" value="Submit" />
       </form>
     </div>
   </div>

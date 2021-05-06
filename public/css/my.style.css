@@ -1,5 +1,5 @@
 .exercise-image {
-  max-height: 400px;
+  max-height: 320px;
   max-width: 600px;
   align-content: center;
 }
@@ -15,3 +15,6 @@
 .single-trainer-item {
   margin: 10px;
 }
+
+/* LUNGES GIF */
+/* https: //seven.app/media/images/Lunges.gif; */

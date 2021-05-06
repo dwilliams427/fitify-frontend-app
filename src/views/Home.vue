@@ -21,24 +21,42 @@
                 </p>
               </div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+                Tired of workout apps that simply aren't made for
+                <b>YOU</b>
+                ? Do you have a disability and common workout apps are simply
+                <b>impossible</b>
+                ? Then
+                <b>Fitify</b>
+                is the app for you! Here you can build custom exercises made by you, for you. Once made, add them to
+                workout playlists, press the
+                <b>Spotify</b>
+                button to get your music going, and follow along with your custom workout. Get Started below.
+                <b>Get those gains!</b>
               </p>
-              <router-link to="/workouts">
-                <button type="button" class="primary-btn">
-                  Workouts
-                  <i class="ti-angle-double-right"></i>
-                </button>
-              </router-link>
-              <router-link to="/exercises">
-                <button type="button" class="primary-btn">
-                  Exercises
-                  <i class="ti-angle-double-right"></i>
-                </button>
-              </router-link>
+              <span>
+                <router-link to="/workouts">
+                  <button type="button" class="primary-btn">
+                    Workouts
+                    <i class="ti-angle-double-right"></i>
+                  </button>
+                </router-link>
+                <router-link to="/exercises">
+                  <button type="button" class="primary-btn">
+                    Exercises
+                    <i class="ti-angle-double-right"></i>
+                  </button>
+                </router-link>
+                <!-- SPOTIFY BUTTON -->
+                <b-button pill variant="success" v-on:click="goToSpotify()">
+                  Open Spotify
+                  <img
+                    class="spotify-img-home"
+                    src="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png"
+                    alt="go to spotify"
+                  />
+                </b-button>
+                <!-- END SPOTIFY BUTTON -->
+              </span>
             </div>
           </div>
         </div>
@@ -100,7 +118,13 @@
 <script>
 // import axios from "axios";
 
-export default {};
+export default {
+  methods: {
+    goToSpotify: function () {
+      window.open("https://accounts.spotify.com/en/status");
+    },
+  },
+};
 </script>
 <style>
 .Home {

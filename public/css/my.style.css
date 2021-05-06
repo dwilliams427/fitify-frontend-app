@@ -8,6 +8,12 @@
   max-width: 208px;
   align-content: center;
 }
+.spotify-img {
+  max-height: 40px;
+  max-width: 40px;
+  align-content: flex-end;
+  justify-content: right;
+}
 .col-lg-12 {
   margin: 10px;
   padding: 10px;

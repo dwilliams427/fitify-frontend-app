@@ -67,7 +67,7 @@
                   <div class="single-trainer-item">
                     <router-link v-bind:to="`/exercises/${exercise.id}/edit`">
                       <div class="trainer-pic">
-                        <img src="img/gallery/gallery-6.jpg" alt="" />
+                        <img class="card-image" :src="exercise.image_url" alt="" />
                       </div>
                       <div class="trainer-text">
                         <h5>{{ exercise.name }}</h5>
@@ -151,7 +151,7 @@
               </div>
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+              <button type="button" class="blog-btn" data-dismiss="modal">Done</button>
             </div>
           </div>
         </div>
@@ -204,12 +204,12 @@
               <div>
                 Name:
                 <input type="text" v-model="workout.name" />
-                <input type="submit" class="btn btn-primary" value="Update" />
-                <!-- <button class="btn btn-danger" v-on:click="destroyWorkout(workout)">Delete</button> -->
+                <input type="submit" class="primary-btn" value="Update" />
+                <button type="submit" class="blog-btn" v-on:click="destroyWorkout(workout)">Delete</button>
               </div>
             </form>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+              <button type="button" class="blog-btn" data-dismiss="modal">Done</button>
             </div>
           </div>
         </div>
@@ -354,6 +354,12 @@ export default {
       axios.get("/api/workouts/" + this.$route.params.id).then((response) => {
         console.log("showing workout", response);
         this.workout = response.data;
+      });
+    },
+    destroyWorkout: function (workout) {
+      axios.delete("/api/workouts/" + workout.id).then((response) => {
+        this.$router.push("/workouts");
+        console.log("workouts destroy", response);
       });
     },
   },

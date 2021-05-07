@@ -66,8 +66,8 @@
               <span>
                 <h1>{{ exercise.name }}</h1>
                 <h5 class="time">{{ exercise.time }} seconds</h5>
-                <h5 class="time">{{ exercise.sets }} sets</h5>
                 <h5 class="time">{{ exercise.reps }} reps</h5>
+                <h5 class="time">{{ exercise.sets }} sets</h5>
               </span>
             </div>
           </b-tab>
@@ -178,18 +178,19 @@ export default {
       console.log("tab index decrease: " + this.tabIndex);
     },
     start() {
-      this.$confetti
-        .start
-        //       // DABABY VERSION
-        //   {
-        //   particles: [
-        //     {
-        //       type: "image",
-        //       // url: "https://media.pitchfork.com/photos/5c7d4c1b4101df3df85c41e5/2:1/w_1000/Dababy_BabyOnBaby.jpg",
-        //     },
-        //   ],
-        // }
-        ();
+      this.$confetti.start(
+        // DABABY VERSION
+        {
+          // particles: [
+
+          //   {
+          //     type: "image",
+          //     url: "https://toppng.com/uploads/preview/strong-arm-emoji-png-strong-emoji-115632515938lewibwf4l.png",
+          //   },
+          // ],
+          windSpeedMax: 1,
+        }
+      );
       setTimeout(() => {
         this.stop();
       }, 4000);

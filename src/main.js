@@ -6,6 +6,9 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import VueConfetti from "vue-confetti";
+
+Vue.use(VueConfetti);
 
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";

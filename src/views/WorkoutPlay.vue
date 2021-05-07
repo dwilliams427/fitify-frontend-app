@@ -66,8 +66,8 @@
               <span>
                 <h1>{{ exercise.name }}</h1>
                 <h5 class="time">{{ exercise.time }} seconds</h5>
-                <h5 class="time">{{ exercise.sets }} sets</h5>
                 <h5 class="time">{{ exercise.reps }} reps</h5>
+                <h5 class="time">{{ exercise.sets }} sets</h5>
               </span>
             </div>
           </b-tab>
@@ -162,6 +162,8 @@ export default {
     increaseValue() {
       if (this.value < 1) {
         this.value = 1;
+      } else if (this.value == this.tabIndex) {
+        this.start();
       } else {
         this.value++;
       }
@@ -174,6 +176,27 @@ export default {
         this.value--;
       }
       console.log("tab index decrease: " + this.tabIndex);
+    },
+    start() {
+      this.$confetti.start(
+        // DABABY VERSION
+        {
+          // particles: [
+
+          //   {
+          //     type: "image",
+          //     url: "https://toppng.com/uploads/preview/strong-arm-emoji-png-strong-emoji-115632515938lewibwf4l.png",
+          //   },
+          // ],
+          windSpeedMax: 1,
+        }
+      );
+      setTimeout(() => {
+        this.stop();
+      }, 4000);
+    },
+    stop() {
+      this.$confetti.stop();
     },
     // getMax() {
     //   this.max = this.workout.exercises.length;

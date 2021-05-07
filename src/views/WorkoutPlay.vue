@@ -13,6 +13,18 @@
                   <span class="sb-item">{{ workout.name }}</span>
                   <span class="sb-item">Play</span>
                 </div>
+                <!-- SPOTIFY BUTTON -->
+                <div>
+                  <b-button pill variant="success" v-on:click="goToSpotify()">
+                    Open Spotify
+                    <img
+                      class="spotify-img"
+                      src="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-download-logo-30.png"
+                      alt="go to spotify"
+                    />
+                  </b-button>
+                </div>
+                <!-- END SPOTIFY BUTTON -->
               </div>
             </div>
           </div>
@@ -55,6 +67,7 @@
                 <h1>{{ exercise.name }}</h1>
                 <h5 class="time">{{ exercise.time }} seconds</h5>
                 <h5 class="time">{{ exercise.sets }} sets</h5>
+                <h5 class="time">{{ exercise.reps }} reps</h5>
               </span>
             </div>
           </b-tab>
@@ -180,6 +193,9 @@ export default {
         this.exercises = response.data;
         console.log(this.exercises);
       });
+    },
+    goToSpotify: function () {
+      window.open("https://accounts.spotify.com/en/status");
     },
   },
 };

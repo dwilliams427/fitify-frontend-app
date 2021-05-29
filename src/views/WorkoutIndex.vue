@@ -197,10 +197,11 @@ export default {
       this.$router.push("/exercises/new");
     },
     isLoggedIn: function () {
+      console.log("Logged in");
       return localStorage.getItem("jwt");
     },
     indexWorkouts: function () {
-      axios.get("/api/workouts").then((response) => {
+      axios.get("api/workouts").then((response) => {
         console.log("workouts index", response);
         this.workouts = response.data;
         // this.num = this.workouts.exercises.length;

@@ -98,7 +98,10 @@ const routes = [
     name: "workout-edit",
     component: WorkoutEdit,
   },
-  
+  {
+    path: "/*",
+    component: 404,
+  },
 ];
 
 const router = new VueRouter({

@@ -2,6 +2,7 @@
 
 This project is split up into backend (Rails) and frontend (Vue.js). the Backend can be found here: https://github.com/dwilliams427/fitify-backend-app
 
+clone this repo, and in your project folder:
 ## Project setup
 ```
 npm install
